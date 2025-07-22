@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Matcher</title>
+    <!-- bootstrap file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/bootstrap.min.css') }}">
+    <!-- styles file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
+    <!-- hevetica neue font family -->
+    <link rel="stylesheet" href="../font/helvetica_neue/stylesheet.css">
+    <!-- poppins font family -->
+    <link rel="stylesheet" href="../font/poppins/stylesheet.css">
+    <!-- Font Awesome CDN (v6) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+
+<body>
+    <div class="bg-cover">
+        <div class="overlay"></div>
+    </div>
+    {% include 'components/navbar.html' %}
+    {% include './home.html' %}
+    {% include 'components/footer.html' %}
+</body>
+
+</html>

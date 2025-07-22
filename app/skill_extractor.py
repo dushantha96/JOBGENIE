@@ -1,0 +1,15 @@
+SKILL_KEYWORDS = {
+    'python', 'perl', 'go', 'c', 'c++', 'git', 'jira', 'docker', 'kubernetes',
+    'azure', 'gcp', 'terraform', 'linux', 'debian', 'ubuntu', 'systemd',
+    'radius', 'active directory', 'entra id', 'vpn', 'ips', 'ids', 'firewall',
+    'proxy', 'packet', 'networking', 'devops', 'rest', 'api', 'typescript',
+    'angular', 'react', 'swift', '.net', '.net core', 'infrastructure', 'cloudrun',
+    'appservice', 'authentication', 'backend', 'frontend', 'scalable',
+    'distributed', 'agile', 'scrum', 'debugging', 'testing', 'ci/cd',
+    'problem-solving', 'collaboration', 'communication', 'proactive',
+    'ownership', 'teamwork', 'improvement'
+}
+
+def extract_skills(text):
+    text = text.lower()
+    return [kw for kw in SKILL_KEYWORDS if kw in text]

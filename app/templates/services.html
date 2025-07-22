@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/bootstrap.min.css') }}">
+    <!-- styles file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
+    <!-- hevetica neue font family -->
+    <link rel="stylesheet" href="../font/helvetica_neue/stylesheet.css">
+    <!-- poppins font family -->
+    <link rel="stylesheet" href="../font/poppins/stylesheet.css">
+    <!-- Font Awesome CDN (v6) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    {% include 'components/navbar.html' %}
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            {% if content_template %}
+            {% include content_template %}
+            {% else %}
+            <div class="col-3">
+                <div>
+                    <p class="fs-17 fw-medium">Empowering careers through data, intelligence, and design</p>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-8">
+                <div class="">
+                    <p class="fs-bigH fw-semibold">We bring resumes to life by linking job seekers and employers
+                        through smart, AI-powered insights</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        <div class="pb-5 pt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-3 d-flex align-items-center">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="sticky-wrapper">
+                                    <div class="d-flex flex-column position-sticky servicesList">
+                                        <a href="" class="fs-15 fw-bold">
+                                            Branding & Logo Design
+                                        </a>
+                                        <a href="" class="fs-15 fw-bold">
+                                            Website Design & Digital
+                                        </a>
+                                        <a href="" class="fs-15 fw-bold">
+                                            Design for Print
+                                        </a>
+                                        <a href="" class="fs-15 fw-bold">
+                                            Illustration & Animation
+                                        </a>
+                                        <a href="" class="fs-15 fw-bold">
+                                            Marketing & Strategy
+                                        </a>
+                                        <a href="" class="fs-15 fw-bold">
+                                            Signage & Interpretation
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-9 services-page">
+                        <!-- first section -->
+                        <div class="row">
+                            <div class="col-12 pb-5">
+                                <div class="svcBannerImage text-center">
+                                    <img src="../static/images/serviceBanner1.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="service-container">
+                                    <h3 class="service-title">Smart Matchmaking</h3>
+                                </div>
+                                <div class="service-content d-flex flex-column fw-medium">
+                                    <p>Our AI-Powered Resume Matching system intelligently compares resumes with job
+                                        descriptions to identify the best candidate matches. By analyzing skills,
+                                        experience, and relevance, it significantly reduces manual effort for recruiters
+                                        while increasing the chances of the right candidate being shortlisted. It helps
+                                        both employers and job seekers make faster, smarter decisions.</p>
+                                </div>
+                            </div>
+                            <div class="col-3 border-styles">
+                                <div class="d-flex flex-column sec-features">
+                                    <span class="sec-1-feature fw-semibold">Brand Development</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Guidelines</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Templates</span>
+                                    <span class="sec-1-feature fw-semibold">Competitive Analysis</span>
+                                    <span class="sec-1-feature fw-semibold">Customer Profiling</span>
+                                    <span class="sec-1-feature fw-semibold">Event & Project Branding</span>
+                                    <span class="sec-1-feature fw-semibold">Logo Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- second section -->
+                        <div class="row">
+                            <div class="col-12 pb-5">
+                                <div class="svcBannerImage text-center">
+                                    <img src="../static/images/serviceBanner2.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="service-container">
+                                    <h3 class="service-title">Job Description Analysis</h3>
+                                </div>
+                                <div class="service-content d-flex flex-column fw-medium">
+                                    <p>This tool breaks down job descriptions into their core components—key skills,
+                                        qualifications, responsibilities, and experience requirements. It enables job
+                                        seekers to understand exactly what employers are looking for and tailor their
+                                        applications accordingly. For recruiters, it ensures consistent job post
+                                        formatting and clarity.</p>
+                                </div>
+                            </div>
+                            <div class="col-3 border-styles">
+                                <div class="d-flex flex-column sec-features">
+                                    <span class="sec-1-feature fw-semibold">Brand Development</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Guidelines</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Templates</span>
+                                    <span class="sec-1-feature fw-semibold">Competitive Analysis</span>
+                                    <span class="sec-1-feature fw-semibold">Customer Profiling</span>
+                                    <span class="sec-1-feature fw-semibold">Event & Project Branding</span>
+                                    <span class="sec-1-feature fw-semibold">Logo Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- third section -->
+                        <div class="row">
+                            <div class="col-12 pb-5">
+                                <div class="svcBannerImage text-center">
+                                    <img src="../static/images/serviceBanner3.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="service-container">
+                                    <h3 class="service-title">Resume Scorer</h3>
+                                </div>
+                                <div class="service-content d-flex flex-column fw-medium">
+                                    <p>Our Resume Score Calculator evaluates how well a resume aligns with a given job
+                                        description, assigning it a performance score based on relevance, keyword usage,
+                                        formatting, and structure. Job seekers receive instant feedback with suggestions
+                                        for improvement, helping them submit stronger applications that stand out.</p>
+                                </div>
+                            </div>
+                            <div class="col-3 border-styles">
+                                <div class="d-flex flex-column sec-features">
+                                    <span class="sec-1-feature fw-semibold">Brand Development</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Guidelines</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Templates</span>
+                                    <span class="sec-1-feature fw-semibold">Competitive Analysis</span>
+                                    <span class="sec-1-feature fw-semibold">Customer Profiling</span>
+                                    <span class="sec-1-feature fw-semibold">Event & Project Branding</span>
+                                    <span class="sec-1-feature fw-semibold">Logo Design</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- forth section -->
+                        <div class="row">
+                            <div class="col-12 pb-5">
+                                <div class="svcBannerImage text-center">
+                                    <img src="../static/images/serviceBanner4.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-9">
+                                <div class="service-container">
+                                    <h3 class="service-title">AI Screening</h3>
+                                </div>
+                                <div class="service-content d-flex flex-column fw-medium">
+                                    <p>Smart Resume Screening uses AI to automatically review and rank large volumes of
+                                        resumes. It highlights the most qualified candidates based on customizable
+                                        criteria, ensuring no good applicant is overlooked. This drastically cuts down
+                                        screening time and improves the accuracy and fairness of the hiring process.</p>
+                                </div>
+                            </div>
+                            <div class="col-3 border-styles">
+                                <div class="d-flex flex-column sec-features">
+                                    <span class="sec-1-feature fw-semibold">Brand Development</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Guidelines</span>
+                                    <span class="sec-1-feature fw-semibold">Brand Templates</span>
+                                    <span class="sec-1-feature fw-semibold">Competitive Analysis</span>
+                                    <span class="sec-1-feature fw-semibold">Customer Profiling</span>
+                                    <span class="sec-1-feature fw-semibold">Event & Project Branding</span>
+                                    <span class="sec-1-feature fw-semibold">Logo Design</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% include 'components/footer.html' %}
+</body>
+
+
+</html>

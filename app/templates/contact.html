@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/bootstrap.min.css') }}">
+    <!-- styles file -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
+    <!-- hevetica neue font family -->
+    <link rel="stylesheet" href="../font/helvetica_neue/stylesheet.css">
+    <!-- poppins font family -->
+    <link rel="stylesheet" href="../font/poppins/stylesheet.css">
+    <!-- Font Awesome CDN (v6) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    {% include 'components/navbar.html' %}
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-3">
+                <div>
+                    <p class="fs-17 fw-medium">Call, email, meet or video call us - however you’d prefer to work
+                        we’d love to hear from you</p>
+                </div>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-8">
+                <div class="">
+                    <p class="fs-bigH fw-semibold">Starting a new project? Get in touch and let’s talk all about it
+                    </p>
+                    <p class="fs-10625 fw-medium custom-width-abt pt-3">We operate our AI-driven platform with a
+                        foundation built
+                        on integrity,
+                        innovation, and purpose. Our team is passionate about reshaping the recruitment landscape
+                        through intelligent, data-backed solutions that empower both job seekers and employers. With
+                        a culture of continuous learning and collaboration, we are committed to refining our
+                        technology and insights to deliver smarter, faster, and fairer hiring experiences for
+                        everyone we serve.</p>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <h5 class="fs-08125 txt-black pb-2">© Job Genie LTD</h5>
+                        <p class="fs-09375 fw-bold">Riverside House,<br>Maple Avenue,<br>LE3 5QT</p>
+                        <a href="tel:01522 528 246"
+                            class="fs-15 txt-black fw-bold footerHover text-decoration-none">01522
+                            528 246</a>
+                    </div>
+                    <div class="col-6">
+                        <h5 class="fs-08125 txt-black pb-2">Email Us</h5>
+                        <a href="mailto:hello@rootstudio.co.uk"
+                            class="fs-15 txt-black fw-bold footerHover text-decoration-none">hello@jobgenie.co.uk</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5 pb-5 cnt-page-imgArea">
+            <div class="col-6">
+                <div class="cnt-page-img-1 text-center">
+                    <img src="../static/images/abt-page-img-1.png" alt="">
+                </div>
+            </div>
+            <div class="col-6 pt-5">
+                <div class="cnt-page-img-2 text-center pt-5">
+                    <img src="../static/images/abt-page-img-2.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="row pt-5 pb-5">
+            <div class="col-3">
+                <div>
+                    <p class="fs-17 fw-medium">Send us a brief
+                    </p>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="">
+                    <p class="fs-15625 fw-semibold">Got a question in mind? Share the details below with us and we’ll
+                        get in
+                        touch to explore how our AI resume analyzer can help</p>
+                </div>
+            </div>
+            <div class="col-1"></div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-3">
+                <div class="abt-candidate pt-3">
+                    <p class="fs-17 fw-medium">About You
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row cnt-form-area">
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input id="first_name" type="text" name="first_name" class="form-control fw-semibold"
+                                placeholder="First Name" required>
+                            <label for="first_name">First Name</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input id="last_name" type="text" name="last_name" class="form-control fw-semibold"
+                                placeholder="Last Name" required>
+                            <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input id="email" type="email" name="email" class="form-control fw-semibold"
+                                placeholder="Email" required>
+                            <label for="email">Email</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-floating mb-3">
+                            <input id="phone" type="tel" name="phone" class="form-control fw-semibold"
+                                placeholder="Telephone Number" required>
+                            <label for="phone">Telephone Number</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-3">
+                <div class="abt-candidate pt-3">
+                    <p class="fs-17 fw-medium">About Your Question
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row cnt-form-area">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea id="user_question" name="user_question" class="form-control fw-semibold"
+                                placeholder="Your Question" required rows="4"></textarea>
+                            <label for="user_question">Your Question</label>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-5">
+            <div class="col-3">
+                <div class="abt-candidate pt-3">
+                    <p class="fs-17 fw-medium">Useful To Know
+                </div>
+            </div>
+            <div class="col-9">
+                <div class="row cnt-form-area">
+                    <div class="col-12">
+                        <div class="form-floating mb-3">
+                            <textarea id="user_question" name="user_knew" class="form-control fw-semibold"
+                                placeholder="How did hear about JOBGENIE?" required rows="4"></textarea>
+                            <label for="user_question">How did hear about JOBGENIE?</label>
+                        </div>
+
+                    </div>
+                </div>
+                <a href="/contact"
+                    class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide float-end mt-5 w-25">
+                    Submit
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 bg-contact-form-area py-4 pt-5 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-9">
+                    <div class="pb-5">
+                        <p class="fs-19375 fw-semibold">Frequently asked questions</p>
+                    </div>
+                    <div class="services-page accordion contactAccordion" id="servicesAccordion">
+                        <div class="card border-0">
+                            <div class="card-header service-container" id="headingOne">
+                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                    href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
+                                    <h3 class="service-title mb-0">Data-Driven Innovation</h3>
+                                </a>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                data-bs-parent="#servicesAccordion">
+                                <div class="card-body service-content d-flex flex-column">
+                                    <p class="fs-10625 fw-medium">Our AI-Powered Resume Matching system intelligently
+                                        compares resumes with job
+                                        descriptions to identify the best candidate matches. By analyzing skills,
+                                        experience, and relevance, it significantly reduces manual effort for recruiters
+                                        while increasing the chances of the right candidate being shortlisted. It helps
+                                        both employers and job seekers make faster, smarter decisions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0">
+                            <div class="card-header service-container" id="headingTwo">
+                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                    href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                    <h3 class="service-title mb-0">Transparency & Integrity</h3>
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                data-bs-parent="#servicesAccordion">
+                                <div class="card-body service-content d-flex flex-column">
+                                    <p class="fs-10625 fw-medium" fw-medium>We ensure our AI tools work with clarity,
+                                        fairness, and unbiased logic, helping
+                                        build trust between job seekers and employers while maintaining ethical data
+                                        practices.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0">
+                            <div class="card-header service-container" id="headingThree">
+                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                    href="#collapseThree" role="button" aria-expanded="false"
+                                    aria-controls="collapseThree">
+                                    <h3 class="service-title mb-0">Intelligent Collaboration</h3>
+                                </a>
+                            </div>
+                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                data-bs-parent="#servicesAccordion">
+                                <div class="card-body service-content d-flex flex-column">
+                                    <p class="fs-10625 fw-medium" fw-medium>Our platform seamlessly bridges
+                                        communication between recruiters and applicants,
+                                        using AI to align goals, expectations, and opportunities more effectively.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card border-0">
+                            <div class="card-header service-container" id="headingFour">
+                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                    href="#collapseFour" role="button" aria-expanded="false"
+                                    aria-controls="collapseFour">
+                                    <h3 class="service-title mb-0">Proven Expertise</h3>
+                                </a>
+                            </div>
+                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                data-bs-parent="#servicesAccordion">
+                                <div class="card-body service-content d-flex flex-column">
+                                    <p class="fs-10625 fw-medium">Backed by robust data science and years of research,
+                                        our solutions consistently
+                                        deliver measurable impact in hiring efficiency, accuracy, and user experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="pb-5">
+                        <p class="fs-19375 fw-semibold">Ready to chat?</p>
+                        <p class="fs-10625 fw-medium custom-width-abt pt-3">Please feel free to get in touch, we’d love
+                            to
+                            hear about your business and are
+                            always happy to help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid px-0">
+            <img src="../static/images/contact-banner-img.png" alt="About Image" class="img-fluid w-100 d-block">
+        </div>
+    {% include 'components/footer.html' %}
+</body>
+
+</html>
