@@ -66,12 +66,9 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                {% if error %}
-                <div class="alert alert-danger">{{ error }}</div>
-                {% endif %}
                 <form method="post" action="/" enctype="multipart/form-data" class="card p-4 shadow-sm">
                     <div class="mb-3">
-                        <label class="form-label">Upload Resume in <b>PDF only:</b></label>
+                        <label class="form-label">Upload Resume in <b class="text-danger">PDF only:</b></label>
                         <input type="file" name="resume_file" accept=".pdf" required class="form-control">
                     </div>
                     <div class="mb-3">
@@ -80,8 +77,30 @@
                     </div>
                     <button type="submit" class="btn btn-primary">Match</button>
                 </form>
+                <div class="p-4">
+                    <div class="mx-auto text-start">
+                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 01 :</strong> Upload your resume in PDF format
+                            only.</p>
+                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 02 :</strong> Paste the related job description
+                            into the
+                            textbox.
+                        </p>
+                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 03 :</strong> Click the "Match" button to
+                            analyze AI score.
+                        </p>
+                    </div>
+                </div>
             </div>
             <div class="col-6">
+                {% if not result %}
+                <div class="p-4">
+                    <h5 class="fw-semibold text-center fs-19375 mb-0">Ready to Know the AI Score!</h5>
+                    <div class="text-center">
+                        <img class="w-100" src="{{ url_for('static', filename='images/analyze-img.png') }}" alt="">
+                    </div>
+                </div>
+                {% endif %}
+
                 {% if result %}
                 <div class="card p-4 shadow-sm">
                     <h5 class="text-green"><b>Match Score: {{ result.score }}%</b></h5>
@@ -106,10 +125,8 @@
                         <strong>Feedback:</strong> {{ result.feedback }}
                     </div>
                     {% endif %}
-
                 </div>
                 {% endif %}
-
             </div>
         </div>
     </div>

@@ -304,6 +304,11 @@ p.fs-19375 {
     line-height: 2.75rem;
 }
 
+.fs-19375 {
+    font-size: 1.9375rem;
+    line-height: 2.75rem;
+}
+
 .bigHeading {
     display: flex;
     flex-direction: column;
