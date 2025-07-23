@@ -12,6 +12,29 @@
 
     .servicesList a {
         text-decoration: none;
+        color: #838B95;
+        white-space: nowrap;
+        touch-action: manipulation;
+        transition: color 0.3s ease;
+    }
+
+    .servicesList a:hover {
+        color: #000000;
+    }
+
+    .sticky-wrapper {
+        position: relative;
+    }
+
+    #stickySidebar {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+
+    .sticky-fixed {
+        position: fixed !important;
+        bottom: 2rem;
+        z-index: 1000;
     }
 </style>
 
@@ -19,30 +42,27 @@
     <div class="row">
         {% if not content_template %}
         <div class="col-3">
-            <div>
-                <p class="fs-17 fw-medium">Empowering careers through data, intelligence, and design</p>
-            </div>
+            <p class="fs-17 fw-medium">Empowering careers through data, intelligence, and design</p>
         </div>
         <div class="col-1"></div>
         <div class="col-8">
-            <div class="">
-                <p class="fs-bigH fw-semibold">We bring resumes to life by linking job seekers and employers
-                    through smart, AI-powered insights</p>
-            </div>
+            <p class="fs-bigH fw-semibold">
+                We bring resumes to life by linking job seekers and employers through smart, AI-powered insights
+            </p>
         </div>
         {% endif %}
     </div>
 
     {% if not content_template %}
-    <div class="pb-5 pt-5">
+    <div class="pt-5">
         <div class="container">
-            <div class="row">
+            <div class="row" id="services-section-container">
                 <!-- Sidebar Links -->
-                <div class="col-3 d-flex align-items-center">
-                    <div class="row">
+                <div class="col-3 d-flex align-items-start" id="sidebar-column">
+                    <div class="row" id="sidebar-column-inner">
                         <div class="col-12">
-                            <div class="sticky-wrapper">
-                                <div class="d-flex flex-column position-sticky servicesList">
+                            <div class="sticky-wrapper" id="stickySidebarWrapper">
+                                <div id="stickySidebar" class="d-flex flex-column servicesList">
                                     {% for link in sidebar_links %}
                                     <a href="#{{ link.service_name }}" class="fs-15 fw-bold nav-link">
                                         {{ link.name }}
@@ -55,9 +75,8 @@
                 </div>
 
                 <!-- Main Content Section -->
-                <div class="col-9 services-page">
+                <div class="col-9 services-page" id="servicesContent">
                     {% for service in services %}
-                    <!-- Service Section -->
                     <div id="{{ sidebar_links[loop.index0].service_name }}" class="service-section mb-5 pt-3">
                         <div class="row">
                             <div class="col-12 pb-5">
@@ -92,7 +111,6 @@
     {% else %}
     <div class="row">
         <div class="col-12 services-page">
-            <!-- Sub-service Page Content -->
             {% include content_template %}
         </div>
     </div>
@@ -103,22 +121,34 @@
     document.addEventListener("DOMContentLoaded", function () {
         const sections = document.querySelectorAll(".service-section");
         const navLinks = document.querySelectorAll(".servicesList a");
+        const sidebar = document.getElementById("stickySidebar");
+        const lastSection = sections[sections.length - 1];
 
         function onScroll() {
-            let scrollPos = window.scrollY || document.documentElement.scrollTop;
+            const scrollY = window.scrollY || document.documentElement.scrollTop;
 
+            // Highlight active link
             sections.forEach((section, index) => {
-                const rect = section.getBoundingClientRect();
-                const offsetTop = rect.top + window.scrollY - 100;
-
-                if (scrollPos >= offsetTop) {
+                const offsetTop = section.offsetTop - 120;
+                if (scrollY >= offsetTop) {
                     navLinks.forEach(link => link.classList.remove("active"));
                     navLinks[index].classList.add("active");
                 }
             });
+
+            // Sticky logic
+            const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
+            const viewportBottom = scrollY + window.innerHeight;
+
+            if (viewportBottom < lastSectionBottom - 20) {
+                sidebar.classList.add("sticky-fixed");
+            } else {
+                sidebar.classList.remove("sticky-fixed");
+            }
         }
 
         document.addEventListener("scroll", onScroll);
+        window.addEventListener("resize", onScroll);
         onScroll();
     });
 </script>

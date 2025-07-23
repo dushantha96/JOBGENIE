@@ -327,14 +327,14 @@ p.fs-19375 {
     line-height: 2.75rem;
 }
 
-.sticky-wrapper {
+/* .sticky-wrapper {
     height: 450vh;
-}
+} */
 
-.servicesList {
+/* .servicesList {
     top: 50px;
     z-index: 10;
-}
+} */
 
 .servicesList a {
     color: #838B95;
