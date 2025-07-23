@@ -103,6 +103,8 @@ def contact():
 def home():
     return render_template('home.html')
 
+from flask import render_template, abort
+
 @app.route('/services')
 @app.route('/services/<service_name>')
 def services(service_name=None):
@@ -113,8 +115,16 @@ def services(service_name=None):
         "smart-screening": "service_partials/smart_screening.html"
     }
 
+    if service_name is None:
+        # Optional: show a default services overview
+        return render_template("services.html", content_template=None)
+
     content_template = service_templates.get(service_name)
+    if not content_template:
+        abort(404)  # Invalid subservice
+
     return render_template("services.html", content_template=content_template)
+
 
 if __name__ == '__main__':
     app.run(debug=True)

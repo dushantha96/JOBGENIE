@@ -2,29 +2,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- bootstrap file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/bootstrap.min.css') }}">
-    <!-- styles file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
-    <!-- hevetica neue font family -->
-    <link rel="stylesheet" href="../font/helvetica_neue/stylesheet.css">
-    <!-- poppins font family -->
-    <link rel="stylesheet" href="../font/poppins/stylesheet.css">
-    <!-- Font Awesome CDN (v6) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JobGenie - Services</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+    <!-- Helvetica Neue -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font/helvetica_neue/stylesheet.css') }}" />
+    <!-- Poppins -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='font/poppins/stylesheet.css') }}" />
+    <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
     {% include 'components/navbar.html' %}
+
     <div class="container pt-5 pb-5">
         <div class="row">
-            {% if content_template %}
-            {% include content_template %}
-            {% else %}
+            <!-- Remove this block to avoid double inclusion -->
+            {% if not content_template %}
             <div class="col-3">
                 <div>
                     <p class="fs-17 fw-medium">Empowering careers through data, intelligence, and design</p>
@@ -39,43 +40,45 @@
             </div>
             {% endif %}
         </div>
+
+        {% if not content_template %}
         <div class="pb-5 pt-5">
             <div class="container">
                 <div class="row">
+                    <!-- Sidebar Links -->
                     <div class="col-3 d-flex align-items-center">
                         <div class="row">
                             <div class="col-12">
                                 <div class="sticky-wrapper">
                                     <div class="d-flex flex-column position-sticky servicesList">
-                                        <a href="" class="fs-15 fw-bold">
-                                            Branding & Logo Design
+                                        <a href="{{ url_for('services', service_name='resume-matching') }}"
+                                            class="fs-15 fw-bold">
+                                            Resume Matching
                                         </a>
-                                        <a href="" class="fs-15 fw-bold">
-                                            Website Design & Digital
+                                        <a href="{{ url_for('services', service_name='job-description') }}"
+                                            class="fs-15 fw-bold">
+                                            Job Description Analysis
                                         </a>
-                                        <a href="" class="fs-15 fw-bold">
-                                            Design for Print
+                                        <a href="{{ url_for('services', service_name='resume-score') }}"
+                                            class="fs-15 fw-bold">
+                                            Resume Score Calculator
                                         </a>
-                                        <a href="" class="fs-15 fw-bold">
-                                            Illustration & Animation
-                                        </a>
-                                        <a href="" class="fs-15 fw-bold">
-                                            Marketing & Strategy
-                                        </a>
-                                        <a href="" class="fs-15 fw-bold">
-                                            Signage & Interpretation
+                                        <a href="{{ url_for('services', service_name='smart-screening') }}"
+                                            class="fs-15 fw-bold">
+                                            Smart Resume Screening
                                         </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- Main Content Section -->
                     <div class="col-9 services-page">
-                        <!-- first section -->
+                        <!-- Service Section 1 -->
                         <div class="row">
                             <div class="col-12 pb-5">
                                 <div class="svcBannerImage text-center">
-                                    <img src="../static/images/serviceBanner1.png" alt="">
+                                    <img src="{{ url_for('static', filename='images/serviceBanner1.png') }}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -104,11 +107,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- second section -->
+
+                        <!-- Service Section 2 -->
                         <div class="row">
                             <div class="col-12 pb-5">
                                 <div class="svcBannerImage text-center">
-                                    <img src="../static/images/serviceBanner2.png" alt="">
+                                    <img src="{{ url_for('static', filename='images/serviceBanner2.png') }}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -137,11 +141,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- third section -->
+
+                        <!-- Service Section 3 -->
                         <div class="row">
                             <div class="col-12 pb-5">
                                 <div class="svcBannerImage text-center">
-                                    <img src="../static/images/serviceBanner3.png" alt="">
+                                    <img src="{{ url_for('static', filename='images/serviceBanner3.png') }}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -169,11 +174,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- forth section -->
+
+                        <!-- Service Section 4 -->
                         <div class="row">
                             <div class="col-12 pb-5">
                                 <div class="svcBannerImage text-center">
-                                    <img src="../static/images/serviceBanner4.png" alt="">
+                                    <img src="{{ url_for('static', filename='images/serviceBanner4.png') }}" alt="" />
                                 </div>
                             </div>
                         </div>
@@ -201,13 +207,20 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> <!-- end .services-page -->
                 </div>
             </div>
         </div>
+        {% else %}
+        <div class="row">
+            <div class="col-12 services-page">
+                <!-- Sub-service Page Content -->
+                {% include content_template %}
+            </div>
+        </div>
+        {% endif %}
     </div>
     {% include 'components/footer.html' %}
 </body>
-
 
 </html>
