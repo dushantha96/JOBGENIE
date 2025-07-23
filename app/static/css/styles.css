@@ -604,7 +604,7 @@ p.fs-19375 {
 .hover-slide:hover {
     color: white !important;
     border-color: #0f1702;
-    background-color: transparent;
+    background-color: transparent !important;
 }
 
 /* Button Styles Ends */
