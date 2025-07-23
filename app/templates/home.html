@@ -66,17 +66,28 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <form method="post" action="/" enctype="multipart/form-data" class="card p-4 shadow-sm">
+                <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+                    {{ form.hidden_tag() }}
+
                     <div class="mb-3">
-                        <label class="form-label">Upload Resume in <b class="text-danger">PDF only:</b></label>
-                        <input type="file" name="resume_file" accept=".pdf" required class="form-control">
+                        {{ form.resume_file.label(class="form-label") }}
+                        {{ form.resume_file(class="form-control") }}
+                        {% for error in form.resume_file.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label">Paste Job Description:</label>
-                        <textarea name="job" rows="6" required class="form-control"></textarea>
+                        {{ form.job.label(class="form-label") }}
+                        {{ form.job(class="form-control", rows="6") }}
+                        {% for error in form.job.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                        {% endfor %}
                     </div>
-                    <button type="submit" class="btn btn-primary">Match</button>
+
+                    {{ form.submit(class="btn btn-primary") }}
                 </form>
+
                 <div class="p-4">
                     <div class="mx-auto text-start">
                         <p class="mb-0 fs-10625 fw-medium"><strong>Step 01 :</strong> Upload your resume in PDF format

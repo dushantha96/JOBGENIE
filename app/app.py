@@ -1,5 +1,5 @@
 from flask import render_template, redirect, flash, url_for
-from forms import ContactForm
+from forms import ContactForm, ResumeMatchForm  # ✅ add ResumeMatchForm
 from skill_extractor import SKILL_KEYWORDS
 from flask import Flask, render_template, request
 from resume_utils import parse_resume, extract_text_from_pdf
@@ -25,66 +25,61 @@ STOPWORDS = {
 def index():
     result = None
     error = None
+    form = ResumeMatchForm()
 
-    if request.method == 'POST':
-        if 'resume_file' not in request.files:
-            error = "No file part in the form."
+    if form.validate_on_submit():
+        uploaded_file = form.resume_file.data
+        job_text = form.job.data
+
+        filename = uploaded_file.filename
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        uploaded_file.save(file_path)
+
+        resume_text = extract_text_from_pdf(file_path)
+        parsed = parse_resume(resume_text)
+        score, matched_skills = match_resume_to_job(resume_text, job_text)
+
+        if score >= 85:
+            verdict = "Excellent Fit – Highly recommended"
+        elif score >= 70:
+            verdict = "Good Fit – Likely suitable"
+        elif score >= 50:
+            verdict = "Moderate Fit – Review recommended"
+        elif score >= 30:
+            verdict = "Low Fit – Probably not suitable"
         else:
-            uploaded_file = request.files['resume_file']
-            if uploaded_file.filename == '':
-                error = "No selected file."
-            elif not uploaded_file.filename.endswith('.pdf'):
-                error = "Only PDF resumes are allowed."
-            else:
-                file_path = os.path.join(UPLOAD_FOLDER, uploaded_file.filename)
-                uploaded_file.save(file_path)
+            verdict = "Poor Fit – Not recommended"
 
-                resume_text = extract_text_from_pdf(file_path)
-                job_text = request.form['job']
+        resume_set = set(skill.lower() for skill in matched_skills)
+        jd_words = set(word.lower().strip(".,") for word in job_text.split())
+        jd_skills = set(word for word in jd_words if word in SKILL_KEYWORDS)
 
-                parsed = parse_resume(resume_text)
-                score, matched_skills = match_resume_to_job(resume_text, job_text)
+        missing_skills = jd_skills - resume_set
 
-                if score >= 85:
-                    verdict = "Excellent Fit – Highly recommended"
-                elif score >= 70:
-                    verdict = "Good Fit – Likely suitable"
-                elif score >= 50:
-                    verdict = "Moderate Fit – Review recommended"
-                elif score >= 30:
-                    verdict = "Low Fit – Probably not suitable"
-                else:
-                    verdict = "Poor Fit – Not recommended"
+        filtered_missing_skills = [
+            skill for skill in missing_skills
+            if skill not in STOPWORDS and len(skill) > 1 and skill.isalpha()
+        ]
 
-                resume_set = set(skill.lower() for skill in matched_skills)
-                jd_words = set(word.lower().strip(".,") for word in job_text.split())
-                jd_skills = set(word for word in jd_words if word in SKILL_KEYWORDS)
+        limited_missing_skills = sorted(filtered_missing_skills)[:10]
 
-                missing_skills = jd_skills - resume_set
+        if score < 50 and limited_missing_skills:
+            feedback = (
+                "Your skills do not match the job description well. "
+                "Consider acquiring or emphasizing: " + ", ".join(limited_missing_skills)
+            )
+        else:
+            feedback = "Your skills match the job description well."
 
-                filtered_missing_skills = [
-                    skill for skill in missing_skills
-                    if skill not in STOPWORDS and len(skill) > 1 and skill.isalpha()
-                ]
+        result = {
+            'parsed': parsed,
+            'score': score,
+            'verdict': verdict,
+            'feedback': feedback
+        }
 
-                limited_missing_skills = sorted(filtered_missing_skills)[:10]
+    return render_template('index.html', form=form, result=result, error=error)
 
-                if score < 50 and limited_missing_skills:
-                    feedback = (
-                        "Your skills do not match the job description well. "
-                        "Consider acquiring or emphasizing: " + ", ".join(limited_missing_skills)
-                    )
-                else:
-                    feedback = "Your skills match the job description well."
-
-                result = {
-                    'parsed': parsed,
-                    'score': score,
-                    'verdict': verdict,
-                    'feedback': feedback
-                }
-
-    return render_template('index.html', result=result, error=error)
 
 @app.route('/about')
 def about():
