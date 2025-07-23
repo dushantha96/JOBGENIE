@@ -1,217 +1,187 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <!-- bootstrap file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/bootstrap.min.css') }}">
-    <!-- styles file -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='../static/css/styles.css') }}">
-    <!-- hevetica neue font family -->
-    <link rel="stylesheet" href="../font/helvetica_neue/stylesheet.css">
-    <!-- poppins font family -->
-    <link rel="stylesheet" href="../font/poppins/stylesheet.css">
-    <!-- Font Awesome CDN (v6) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-        integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% block title %}About Us{% endblock %}
 
-</head>
+{% block content %}
 
-<body>
-    {% include 'components/navbar.html' %}
-    <div class="secondSection pt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-3">
-                    <div>
-                        <p class="fs-17 fw-medium">Smarter matches, powered by AI — intelligently connecting talent to
-                            opportunity</p>
-                    </div>
-                </div>
-                <div class="col-1"></div>
-                <div class="col-8">
-                    <div class="">
-                        <p class="fs-bigH fw-semibold">Do you believe in smarter hiring and empowering careers with AI?
-                            If so, let’s connect</p>
-                        <p class="fs-10625 fw-medium custom-width-abt pt-3">We operate our AI-driven platform with a
-                            foundation built
-                            on integrity,
-                            innovation, and purpose. Our team is passionate about reshaping the recruitment landscape
-                            through intelligent, data-backed solutions that empower both job seekers and employers. With
-                            a culture of continuous learning and collaboration, we are committed to refining our
-                            technology and insights to deliver smarter, faster, and fairer hiring experiences for
-                            everyone we serve.</p>
-                    </div>
+<div class="secondSection pt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div>
+                    <p class="fs-17 fw-medium">Smarter matches, powered by AI — intelligently connecting talent to
+                        opportunity</p>
                 </div>
             </div>
-            <div class="row pt-5 pb-5">
-                <div class="col-6">
-                    <div class="abt-page-img-1 text-center">
-                        <img src="{{ url_for('static', filename='images/abt-page-img-1.png') }}" alt="">
-                    </div>
-                </div>
-                <div class="col-6 pt-5">
-                    <div class="abt-page-img-2 text-center pt-5">
-                        <img src="{{ url_for('static', filename='images/abt-page-img-2.png') }}" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="row pb-5">
-                <div class="col-12">
-                    <p class="fs-17 fw-medium">How Our Platform Works</p>
-                </div>
-                <div class="col-5 pt-5">
-                    <p class="bigHeading fw-semibold pb-4">Our passion lies in building intelligent solutions that
-                        simplify hiring and elevate career growth</p>
-                    <p class="fs-10625 fw-medium">Our team takes immense pride not only in the intelligence and
-                        innovation behind
-                        our AI solutions, but also in our quick response times, transparent communication, and
-                        commitment to delivering real value to both job seekers and employers.</p>
-                </div>
-                <div class="col-1 pt-5"></div>
-                <div class="col-6 pt-5">
-                    <div class="services-page accordion" id="servicesAccordion">
-                        <div class="card border-0">
-                            <div class="card-header service-container bg-transparent" id="headingOne">
-                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                    href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
-                                    <h3 class="service-title mb-0">Data-Driven Innovation</h3>
-                                </a>
-                            </div>
-                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#servicesAccordion">
-                                <div class="card-body service-content d-flex flex-column">
-                                    <p class="fs-10625 fw-medium">Our AI-Powered Resume Matching system intelligently
-                                        compares resumes with job
-                                        descriptions to identify the best candidate matches. By analyzing skills,
-                                        experience, and relevance, it significantly reduces manual effort for recruiters
-                                        while increasing the chances of the right candidate being shortlisted. It helps
-                                        both employers and job seekers make faster, smarter decisions.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-0">
-                            <div class="card-header service-container bg-transparent" id="headingTwo">
-                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                    href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                                    <h3 class="service-title mb-0">Transparency & Integrity</h3>
-                                </a>
-                            </div>
-                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#servicesAccordion">
-                                <div class="card-body service-content d-flex flex-column">
-                                    <p class="fs-10625 fw-medium" fw-medium>We ensure our AI tools work with clarity,
-                                        fairness, and unbiased logic, helping
-                                        build trust between job seekers and employers while maintaining ethical data
-                                        practices.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-0">
-                            <div class="card-header service-container bg-transparent" id="headingThree">
-                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                    href="#collapseThree" role="button" aria-expanded="false"
-                                    aria-controls="collapseThree">
-                                    <h3 class="service-title mb-0">Intelligent Collaboration</h3>
-                                </a>
-                            </div>
-                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#servicesAccordion">
-                                <div class="card-body service-content d-flex flex-column">
-                                    <p class="fs-10625 fw-medium" fw-medium>Our platform seamlessly bridges
-                                        communication between recruiters and applicants,
-                                        using AI to align goals, expectations, and opportunities more effectively.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card border-0">
-                            <div class="card-header service-container bg-transparent" id="headingFour">
-                                <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                    href="#collapseFour" role="button" aria-expanded="false"
-                                    aria-controls="collapseFour">
-                                    <h3 class="service-title mb-0">Proven Expertise</h3>
-                                </a>
-                            </div>
-                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#servicesAccordion">
-                                <div class="card-body service-content d-flex flex-column">
-                                    <p class="fs-10625 fw-medium">Backed by robust data science and years of research,
-                                        our solutions consistently
-                                        deliver measurable impact in hiring efficiency, accuracy, and user experience.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-1"></div>
+            <div class="col-8">
+                <div class="">
+                    <p class="fs-bigH fw-semibold">Do you believe in smarter hiring and empowering careers with AI? If
+                        so, let’s connect</p>
+                    <p class="fs-10625 fw-medium custom-width-abt pt-3">We operate our AI-driven platform with a
+                        foundation built on integrity, innovation, and purpose. Our team is passionate about reshaping
+                        the recruitment landscape through intelligent, data-backed solutions that empower both job
+                        seekers and employers. With a culture of continuous learning and collaboration, we are committed
+                        to refining our technology and insights to deliver smarter, faster, and fairer hiring
+                        experiences for everyone we serve.</p>
                 </div>
             </div>
         </div>
-        <div class="container-fluid px-0">
-            <img src="{{ url_for('static', filename='images/abt-page-img-fullimg.png') }}" alt="About Image"
-                class="img-fluid w-100 d-block">
-        </div>
-        <div class="container pt-5 pb-5">
-            <div class="row">
-                <div class="col-4 align-items-start">
-                    <div>
-                        <p class="fs-19375 text-start mb-0 fw-semibold">Empowering Smarter Hiring Decisions</p>
-                        <p class="fs-10625 fw-medium custom-width-abt pt-3">SmartCV Match uses AI to instantly compare
-                            resumes with job descriptions across any industry. It delivers clear match scores, helping
-                            recruiters and job seekers make faster, fairer decisions.</p>
-                    </div>
+        <div class="row pt-5 pb-5">
+            <div class="col-6">
+                <div class="abt-page-img-1 text-center">
+                    <img src="{{ url_for('static', filename='images/abt-page-img-1.png') }}" alt="">
                 </div>
-                <div class="col-4"></div>
-                <div class="col-4">
-                    <div class="">
-                        <p class="fs-19375 text-start mb-0 fw-semibold">Got a question?</p>
-                        <p class="fs-10625 fw-medium custom-width-abt pt-3">We're always happy to help. Feel free to
-                            reach out — whether it's about improving your resume, understanding match scores, or
-                            exploring how SmartCV Match can support your hiring journey.</p>
-                        <a href="{{ url_for('contact') }}"
-                            class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide">
-                            Start a Conversation
-                        </a>
-                    </div>
+            </div>
+            <div class="col-6 pt-5">
+                <div class="abt-page-img-2 text-center pt-5">
+                    <img src="{{ url_for('static', filename='images/abt-page-img-2.png') }}" alt="">
                 </div>
             </div>
         </div>
-        <div class="container-fluid px-0 position-relative text-white">
-            <video class="w-100 d-block" autoplay muted loop playsinline>
-                <source src="{{ url_for('static', filename='videos/aboutUs-video.mp4') }}" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="video-overlay"></div>
-            <div class="position-absolute top-0 start-0 w-100 h-100">
-                <div class="container h-100">
-                    <div class="row h-100 align-items-center">
-                        <div class="col-md-8">
-                            <h2 class="fw-bold display-5">Smarter Hiring with AI</h2>
-                            <p class="fs-5 pt-3 fw-semibold">
-                                We empower businesses with AI-driven tools to streamline hiring, reduce bias, and make
-                                better
-                                hiring decisions.
-                            </p>
-                        </div>
-                        <div class="col-md-4 text-md-end mt-4 mt-md-0">
-                            <a href="{{ url_for('contact') }}"
-                                class="btn rounded-pill px-4 py-2 fw-semibold btn-hover-white">
-                                <span>Reach Out to Us</span>
+        <div class="row pb-5">
+            <div class="col-12">
+                <p class="fs-17 fw-medium">How Our Platform Works</p>
+            </div>
+            <div class="col-5 pt-5">
+                <p class="bigHeading fw-semibold pb-4">Our passion lies in building intelligent solutions that simplify
+                    hiring and elevate career growth</p>
+                <p class="fs-10625 fw-medium">Our team takes immense pride not only in the intelligence and innovation
+                    behind our AI solutions, but also in our quick response times, transparent communication, and
+                    commitment to delivering real value to both job seekers and employers.</p>
+            </div>
+            <div class="col-1 pt-5"></div>
+            <div class="col-6 pt-5">
+                <div class="services-page accordion" id="servicesAccordion">
+                    <div class="card border-0">
+                        <div class="card-header service-container bg-transparent" id="headingOne">
+                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
+                                <h3 class="service-title mb-0">Data-Driven Innovation</h3>
                             </a>
+                        </div>
+                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                            data-bs-parent="#servicesAccordion">
+                            <div class="card-body service-content d-flex flex-column">
+                                <p class="fs-10625 fw-medium">Our AI-Powered Resume Matching system intelligently
+                                    compares resumes with job descriptions to identify the best candidate matches. By
+                                    analyzing skills, experience, and relevance, it significantly reduces manual effort
+                                    for recruiters while increasing the chances of the right candidate being
+                                    shortlisted. It helps both employers and job seekers make faster, smarter decisions.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0">
+                        <div class="card-header service-container bg-transparent" id="headingTwo">
+                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
+                                <h3 class="service-title mb-0">Transparency & Integrity</h3>
+                            </a>
+                        </div>
+                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                            data-bs-parent="#servicesAccordion">
+                            <div class="card-body service-content d-flex flex-column">
+                                <p class="fs-10625 fw-medium">We ensure our AI tools work with clarity, fairness, and
+                                    unbiased logic, helping build trust between job seekers and employers while
+                                    maintaining ethical data practices.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0">
+                        <div class="card-header service-container bg-transparent" id="headingThree">
+                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
+                                <h3 class="service-title mb-0">Intelligent Collaboration</h3>
+                            </a>
+                        </div>
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                            data-bs-parent="#servicesAccordion">
+                            <div class="card-body service-content d-flex flex-column">
+                                <p class="fs-10625 fw-medium">Our platform seamlessly bridges communication between
+                                    recruiters and applicants, using AI to align goals, expectations, and opportunities
+                                    more effectively.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card border-0">
+                        <div class="card-header service-container bg-transparent" id="headingFour">
+                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
+                                href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
+                                <h3 class="service-title mb-0">Proven Expertise</h3>
+                            </a>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                            data-bs-parent="#servicesAccordion">
+                            <div class="card-body service-content d-flex flex-column">
+                                <p class="fs-10625 fw-medium">Backed by robust data science and years of research, our
+                                    solutions consistently deliver measurable impact in hiring efficiency, accuracy, and
+                                    user experience.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {% include 'components/footer.html' %}
 
-</body>
+    <div class="container-fluid px-0">
+        <img src="{{ url_for('static', filename='images/abt-page-img-fullimg.png') }}" alt="About Image"
+            class="img-fluid w-100 d-block">
+    </div>
 
-</html>
+    <div class="container pt-5 pb-5">
+        <div class="row">
+            <div class="col-4 align-items-start">
+                <div>
+                    <p class="fs-19375 text-start mb-0 fw-semibold">Empowering Smarter Hiring Decisions</p>
+                    <p class="fs-10625 fw-medium custom-width-abt pt-3">SmartCV Match uses AI to instantly compare
+                        resumes with job descriptions across any industry. It delivers clear match scores, helping
+                        recruiters and job seekers make faster, fairer decisions.</p>
+                </div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4">
+                <div class="">
+                    <p class="fs-19375 text-start mb-0 fw-semibold">Got a question?</p>
+                    <p class="fs-10625 fw-medium custom-width-abt pt-3">We're always happy to help. Feel free to reach
+                        out — whether it's about improving your resume, understanding match scores, or exploring how
+                        SmartCV Match can support your hiring journey.</p>
+                    <a href="{{ url_for('contact') }}"
+                        class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide">
+                        Start a Conversation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid px-0 position-relative text-white">
+        <video class="w-100 d-block" autoplay muted loop playsinline>
+            <source src="{{ url_for('static', filename='videos/aboutUs-video.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+        <div class="position-absolute top-0 start-0 w-100 h-100">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-md-8">
+                        <h2 class="fw-bold display-5">Smarter Hiring with AI</h2>
+                        <p class="fs-5 pt-3 fw-semibold">We empower businesses with AI-driven tools to streamline
+                            hiring, reduce bias, and make better hiring decisions.</p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-4 mt-md-0">
+                        <a href="{{ url_for('contact') }}"
+                            class="btn rounded-pill px-4 py-2 fw-semibold btn-hover-white">
+                            <span>Reach Out to Us</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
