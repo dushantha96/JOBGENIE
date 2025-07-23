@@ -28,7 +28,8 @@
             <div class="row">
                 <div class="col-3">
                     <div>
-                        <p class="fs-17 fw-medium">Empowering careers through data, intelligence, and design</p>
+                        <p class="fs-17 fw-medium">Smarter matches, powered by AI — intelligently connecting talent to
+                            opportunity</p>
                     </div>
                 </div>
                 <div class="col-1"></div>
@@ -50,12 +51,12 @@
             <div class="row pt-5 pb-5">
                 <div class="col-6">
                     <div class="abt-page-img-1 text-center">
-                        <img src="../static/images/abt-page-img-1.png" alt="">
+                        <img src="{{ url_for('static', filename='images/abt-page-img-1.png') }}" alt="">
                     </div>
                 </div>
                 <div class="col-6 pt-5">
                     <div class="abt-page-img-2 text-center pt-5">
-                        <img src="../static/images/abt-page-img-2.png" alt="">
+                        <img src="{{ url_for('static', filename='images/abt-page-img-2.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -153,7 +154,8 @@
             </div>
         </div>
         <div class="container-fluid px-0">
-            <img src="../static/images/abt-page-img-fullimg.png" alt="About Image" class="img-fluid w-100 d-block">
+            <img src="{{ url_for('static', filename='images/abt-page-img-fullimg.png') }}" alt="About Image"
+                class="img-fluid w-100 d-block">
         </div>
         <div class="container pt-5 pb-5">
             <div class="row">
@@ -172,7 +174,8 @@
                         <p class="fs-10625 fw-medium custom-width-abt pt-3">We're always happy to help. Feel free to
                             reach out — whether it's about improving your resume, understanding match scores, or
                             exploring how SmartCV Match can support your hiring journey.</p>
-                        <a href="/contact" class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide">
+                        <a href="{{ url_for('contact') }}"
+                            class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide">
                             Start a Conversation
                         </a>
                     </div>
@@ -181,7 +184,7 @@
         </div>
         <div class="container-fluid px-0 position-relative text-white">
             <video class="w-100 d-block" autoplay muted loop playsinline>
-                <source src="../static/videos/aboutUs-video.mp4" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/aboutUs-video.mp4') }}" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
             <div class="video-overlay"></div>
@@ -197,10 +200,10 @@
                             </p>
                         </div>
                         <div class="col-md-4 text-md-end mt-4 mt-md-0">
-                            <a href="/contact" class="btn rounded-pill px-4 py-2 fw-semibold btn-hover-white">
-                                <span>Start a Conversation</span>
+                            <a href="{{ url_for('contact') }}"
+                                class="btn rounded-pill px-4 py-2 fw-semibold btn-hover-white">
+                                <span>Reach Out to Us</span>
                             </a>
-
                         </div>
                     </div>
                 </div>

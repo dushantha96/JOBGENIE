@@ -3,13 +3,13 @@
         <a class="navbar-brand logoTitle" href="{{ url_for('index') }}"><b>Job</b><span
                 class="genieTxt">Genie</span></a>
         <div class="d-flex ms-auto navLink">
-            <a class="nav-link fw-semibold me-60 {% if request.path == '/' %}fw-bold text-decoration-underline color-primary{% endif %}"
+            <a class="nav-link fw-semibold me-60 {% if request.path == url_for('index') %}fw-bold text-decoration-underline color-primary{% endif %}"
                 href="{{ url_for('index') }}">Home</a>
-            <a class="nav-link fw-semibold me-60 {% if request.path == '/services' %}fw-bold text-decoration-underline color-primary{% endif %}"
+            <a class="nav-link fw-semibold me-60 {% if request.path == url_for('services') %}fw-bold text-decoration-underline color-primary{% endif %}"
                 href="{{ url_for('services') }}">Services</a>
-            <a class="nav-link fw-semibold me-60 {% if request.path == '/about' %}fw-bold text-decoration-underline color-primary{% endif %}"
+            <a class="nav-link fw-semibold me-60 {% if request.path == url_for('about') %}fw-bold text-decoration-underline color-primary{% endif %}"
                 href="{{ url_for('about') }}">About</a>
-            <a class="nav-link fw-semibold {% if request.path == '/contact' %}fw-bold text-decoration-underline color-primary{% endif %}"
+            <a class="nav-link fw-semibold {% if request.path == url_for('contact') %}fw-bold text-decoration-underline color-primary{% endif %}"
                 href="{{ url_for('contact') }}">Contact</a>
         </div>
     </nav>
