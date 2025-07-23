@@ -1,5 +1,6 @@
 from skill_extractor import extract_skills
 
+
 def match_resume_to_job(resume_text, job_text):
     resume_skills = extract_skills(resume_text)
     job_skills = extract_skills(job_text)
