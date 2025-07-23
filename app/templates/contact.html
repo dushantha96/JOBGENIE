@@ -89,111 +89,113 @@
             <div class="col-1"></div>
         </div>
 
-      {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
         {% for category, message in messages %}
         <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
             {{ message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
         {% endfor %}
-    {% endif %}
-{% endwith %}
+        {% endif %}
+        {% endwith %}
 
-<form method="POST">
-    {{ form.hidden_tag() }}
-    <div class="row pb-5">
-        <div class="col-3">
-            <div class="abt-candidate pt-3">
-                <p class="fs-17 fw-medium">About You</p>
-            </div>
-        </div>
-        <div class="col-9">
-            <div class="row cnt-form-area">
-                <div class="col-6 mb-3">
-                    <div class="form-floating">
-                        {{ form.first_name(class="form-control fw-semibold", placeholder="First Name") }}
-                        <label for="{{ form.first_name.id }}">First Name</label>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div class="row pb-5">
+                <div class="col-3">
+                    <div class="abt-candidate pt-3">
+                        <p class="fs-17 fw-medium">About You</p>
                     </div>
-                    {% for error in form.first_name.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
                 </div>
-                <div class="col-6 mb-3">
-                    <div class="form-floating">
-                        {{ form.last_name(class="form-control fw-semibold", placeholder="Last Name") }}
-                        <label for="{{ form.last_name.id }}">Last Name</label>
+                <div class="col-9">
+                    <div class="row cnt-form-area">
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                {{ form.first_name(class="form-control fw-semibold", placeholder="First Name") }}
+                                <label for="{{ form.first_name.id }}">First Name</label>
+                            </div>
+                            {% for error in form.first_name.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                {{ form.last_name(class="form-control fw-semibold", placeholder="Last Name") }}
+                                <label for="{{ form.last_name.id }}">Last Name</label>
+                            </div>
+                            {% for error in form.last_name.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                {{ form.email(class="form-control fw-semibold", placeholder="Email") }}
+                                <label for="{{ form.email.id }}">Email</label>
+                            </div>
+                            {% for error in form.email.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                        <div class="col-6 mb-3">
+                            <div class="form-floating">
+                                {{ form.phone(class="form-control fw-semibold", placeholder="Telephone Number") }}
+                                <label for="{{ form.phone.id }}">Telephone Number</label>
+                            </div>
+                            {% for error in form.phone.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
                     </div>
-                    {% for error in form.last_name.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
-                </div>
-                <div class="col-6 mb-3">
-                    <div class="form-floating">
-                        {{ form.email(class="form-control fw-semibold", placeholder="Email") }}
-                        <label for="{{ form.email.id }}">Email</label>
-                    </div>
-                    {% for error in form.email.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
-                </div>
-                <div class="col-6 mb-3">
-                    <div class="form-floating">
-                        {{ form.phone(class="form-control fw-semibold", placeholder="Telephone Number") }}
-                        <label for="{{ form.phone.id }}">Telephone Number</label>
-                    </div>
-                    {% for error in form.phone.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row pb-5">
-        <div class="col-3">
-            <div class="abt-candidate pt-3">
-                <p class="fs-17 fw-medium">About Your Question</p>
-            </div>
-        </div>
-        <div class="col-9">
-            <div class="row cnt-form-area">
-                <div class="col-12 mb-3">
-                    <div class="form-floating">
-                        {{ form.user_question(class="form-control fw-semibold", placeholder="Your Question", rows="4", style="height: 100px;") }}
-                        <label for="{{ form.user_question.id }}">Your Question</label>
-                    </div>
-                    {% for error in form.user_question.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row pb-5">
-        <div class="col-3">
-            <div class="abt-candidate pt-3">
-                <p class="fs-17 fw-medium">Useful To Know</p>
-            </div>
-        </div>
-        <div class="col-9">
-            <div class="row cnt-form-area">
-                <div class="col-12 mb-3">
-                    <div class="form-floating">
-                        {{ form.user_knew(class="form-control fw-semibold", placeholder="How did you hear about JOBGENIE?", rows="4", style="height: 100px;") }}
-                        <label for="{{ form.user_knew.id }}">How did you hear about JOBGENIE?</label>
-                    </div>
-                    {% for error in form.user_knew.errors %}
-                        <div class="text-danger small mt-1">{{ error }}</div>
-                    {% endfor %}
                 </div>
             </div>
 
-            {{ form.submit(class="btn btn-outline-dark rounded-pill px-4 py-2 fw-semibold hover-slide float-end mt-5 w-25") }}
-        </div>
-    </div>
-</form>
+            <div class="row pb-5">
+                <div class="col-3">
+                    <div class="abt-candidate pt-3">
+                        <p class="fs-17 fw-medium">About Your Question</p>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row cnt-form-area">
+                        <div class="col-12 mb-3">
+                            <div class="form-floating">
+                                {{ form.user_question(class="form-control fw-semibold", placeholder="Your Question", rows="4", style="height: 100px;") }}
+                                <label for="{{ form.user_question.id }}">Your Question</label>
+                            </div>
+                            {% for error in form.user_question.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row pb-5">
+                <div class="col-3">
+                    <div class="abt-candidate pt-3">
+                        <p class="fs-17 fw-medium">Useful To Know</p>
+                    </div>
+                </div>
+                <div class="col-9">
+                    <div class="row cnt-form-area">
+                        <div class="col-12 mb-3">
+                            <div class="form-floating">
+                                {{ form.user_knew(class="form-control fw-semibold", placeholder="How did you hear about JOBGENIE?", rows="4", style="height: 100px;") }}
+                                <label for="{{ form.user_knew.id }}">How did you hear about JOBGENIE?</label>
+                            </div>
+                            {% for error in form.user_knew.errors %}
+                            <div class="text-danger small mt-1">{{ error }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <button type="submit"
+                        class="btn rounded-pill px-4 py-2 fw-semibold hover-slide float-end mt-5 w-25">
+                        {{ form.submit.label.text }}
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
     <div class="w-100 bg-contact-form-area py-4 pt-5 pb-5">
         <div class="container">

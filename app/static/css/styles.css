@@ -427,7 +427,7 @@ p.fs-19375 {
     padding: 0;
 }
 
-.hover-slide {
+/* .hover-slide {
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -435,9 +435,9 @@ p.fs-19375 {
     border: 1px solid #0f1702;
     background-color: transparent;
     transition: color 0.5s ease;
-}
+} */
 
-.hover-slide::before {
+/* .hover-slide::before {
     content: "";
     position: absolute;
     top: 0;
@@ -447,15 +447,15 @@ p.fs-19375 {
     background-color: #0f1702;
     z-index: -1;
     transition: width 0.5s ease;
-}
+} */
 
-.hover-slide:hover::before {
+/* .hover-slide:hover::before {
     width: 100%;
-}
+} */
 
-.hover-slide:hover {
+/* .hover-slide:hover {
     color: white;
-}
+} */
 
 .video-overlay {
     position: absolute;
@@ -511,10 +511,6 @@ p.fs-19375 {
 .btn-hover-white span {
     position: relative;
     z-index: 2;
-}
-
-.btn:hover {
-    background-color: transparent !important;
 }
 
 .fs-08125 {
@@ -576,3 +572,39 @@ p.fs-19375 {
 }
 
 /* About Us Page End */
+
+/* Button Styles Starts */
+.hover-slide {
+    font-size: 1rem !important;
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+    border: 2px solid #0f1702;
+    background-color: transparent !important;
+    color: #0f1702;
+    transition: color 0.4s ease, border-color 0.4s ease;
+}
+
+.hover-slide::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #0f1702;
+    z-index: -1;
+    transition: width 0.4s ease;
+}
+
+.hover-slide:hover::before {
+    width: 100%;
+}
+
+.hover-slide:hover {
+    color: white !important;
+    border-color: #0f1702;
+    background-color: transparent !important;
+}
+
+/* Button Styles Ends */
