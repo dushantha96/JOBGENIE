@@ -1,3 +1,5 @@
+from flask import render_template, redirect, flash, url_for
+from forms import ContactForm
 from skill_extractor import SKILL_KEYWORDS
 from flask import Flask, render_template, request
 from resume_utils import parse_resume, extract_text_from_pdf
@@ -5,6 +7,7 @@ from matcher import match_resume_to_job
 import os
 
 app = Flask(__name__)
+app.secret_key = 'your-very-secret-key'  # Replace this with a strong, random key
 UPLOAD_FOLDER = 'uploads'
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -91,9 +94,15 @@ def about():
 def footer():
     return render_template('footer.html')
 
-@app.route('/contact')
+@app.route('/contact', methods=['GET', 'POST'])
 def contact():
-    return render_template('contact.html')
+    form = ContactForm()
+    if form.validate_on_submit():
+        # You can now access: form.first_name.data, form.email.data, etc.
+        flash('Your message was submitted successfully!', 'success')
+        return redirect(url_for('contact'))
+
+    return render_template('contact.html', form=form)
 
 @app.route('/home')
 def home():
