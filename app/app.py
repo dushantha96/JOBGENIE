@@ -1,3 +1,8 @@
+from accordion import (
+    get_about_accordion,
+    get_contact_accordion,
+    get_service_accordion,  # ✅ already imported
+)
 from flask import render_template, redirect, flash, url_for, abort
 from forms import ContactForm, ResumeMatchForm  # ✅ add ResumeMatchForm
 from skill_extractor import SKILL_KEYWORDS
@@ -150,7 +155,8 @@ def index():
 
 @app.route("/about")
 def about():
-    return render_template("about.html")
+    accordion_services = get_about_accordion()
+    return render_template("about.html", accordion_services=accordion_services)
 
 
 @app.route("/footer")
@@ -161,10 +167,13 @@ def footer():
 @app.route("/contact", methods=["GET", "POST"])
 def contact():
     form = ContactForm()
+    contact_accordion = get_contact_accordion()
     if form.validate_on_submit():
         flash("Your message was submitted successfully!", "success")
         return redirect(url_for("contact"))
-    return render_template("contact.html", form=form)
+    return render_template(
+        "contact.html", form=form, contact_accordion=contact_accordion
+    )
 
 
 @app.route("/home")
@@ -264,6 +273,9 @@ def services(service_name=None):
         },
     ]
 
+    # ✅ Add accordion for services
+    service_accordion = get_service_accordion()
+
     if service_name is None:
         return render_template(
             "services.html",
@@ -271,6 +283,7 @@ def services(service_name=None):
             sidebar_links=sidebar_links,
             features=features,
             services=services,
+            service_accordion=service_accordion,
         )
 
     content_template = service_templates.get(service_name)
@@ -283,6 +296,7 @@ def services(service_name=None):
         sidebar_links=sidebar_links,
         features=features,
         services=services,
+        service_accordion=service_accordion,
     )
 
 

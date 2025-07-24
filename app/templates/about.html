@@ -53,77 +53,26 @@
             <div class="col-1 pt-5"></div>
             <div class="col-6 pt-5">
                 <div class="services-page accordion" id="servicesAccordion">
+                    {% for service in accordion_services %}
                     <div class="card border-0">
-                        <div class="card-header service-container bg-transparent" id="headingOne">
+                        <div class="card-header service-container bg-transparent" id="heading{{ service.id }}">
                             <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                href="#collapseOne" role="button" aria-expanded="true" aria-controls="collapseOne">
-                                <h3 class="service-title mb-0">Data-Driven Innovation</h3>
+                                href="#collapse{{ service.id }}" role="button"
+                                aria-expanded="{{ 'true' if loop.first else 'false' }}"
+                                aria-controls="collapse{{ service.id }}">
+                                <h3 class="service-title mb-0">{{ service.title }}</h3>
                             </a>
                         </div>
-                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                            data-bs-parent="#servicesAccordion">
+                        <div id="collapse{{ service.id }}" class="collapse {% if loop.first %}show{% endif %}"
+                            aria-labelledby="heading{{ service.id }}" data-bs-parent="#servicesAccordion">
                             <div class="card-body service-content d-flex flex-column">
-                                <p class="fs-10625 fw-medium">Our AI-Powered Resume Matching system intelligently
-                                    compares resumes with job descriptions to identify the best candidate matches. By
-                                    analyzing skills, experience, and relevance, it significantly reduces manual effort
-                                    for recruiters while increasing the chances of the right candidate being
-                                    shortlisted. It helps both employers and job seekers make faster, smarter decisions.
-                                </p>
+                                <p class="fs-10625 fw-medium">{{ service.content }}</p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="card border-0">
-                        <div class="card-header service-container bg-transparent" id="headingTwo">
-                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo">
-                                <h3 class="service-title mb-0">Transparency & Integrity</h3>
-                            </a>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                            data-bs-parent="#servicesAccordion">
-                            <div class="card-body service-content d-flex flex-column">
-                                <p class="fs-10625 fw-medium">We ensure our AI tools work with clarity, fairness, and
-                                    unbiased logic, helping build trust between job seekers and employers while
-                                    maintaining ethical data practices.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card border-0">
-                        <div class="card-header service-container bg-transparent" id="headingThree">
-                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree">
-                                <h3 class="service-title mb-0">Intelligent Collaboration</h3>
-                            </a>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                            data-bs-parent="#servicesAccordion">
-                            <div class="card-body service-content d-flex flex-column">
-                                <p class="fs-10625 fw-medium">Our platform seamlessly bridges communication between
-                                    recruiters and applicants, using AI to align goals, expectations, and opportunities
-                                    more effectively.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card border-0">
-                        <div class="card-header service-container bg-transparent" id="headingFour">
-                            <a class="text-dark text-decoration-none d-block" data-bs-toggle="collapse"
-                                href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour">
-                                <h3 class="service-title mb-0">Proven Expertise</h3>
-                            </a>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                            data-bs-parent="#servicesAccordion">
-                            <div class="card-body service-content d-flex flex-column">
-                                <p class="fs-10625 fw-medium">Backed by robust data science and years of research, our
-                                    solutions consistently deliver measurable impact in hiring efficiency, accuracy, and
-                                    user experience.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
+
             </div>
         </div>
     </div>
