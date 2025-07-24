@@ -225,18 +225,6 @@ def services(service_name=None):
         },
     ]
 
-    # Features list data
-    features = [
-        "Brand Development",
-        "Brand Guidelines",
-        "Brand Templates",
-        "Competitive Analysis",
-        "Customer Profiling",
-        "Event & Project Branding",
-        "Logo Design",
-    ]
-
-    # Add accordion for services
     service_accordion = get_service_accordion()
 
     if service_name is None:
@@ -244,7 +232,6 @@ def services(service_name=None):
             "services.html",
             content_template=None,
             sidebar_links=sidebar_links,
-            features=features,
             services=service_data_list,
             service_accordion=service_accordion,
         )
@@ -253,12 +240,24 @@ def services(service_name=None):
     if not content_template:
         abort(404)
 
+    # Match service by route key
+    service_index_map = {
+        "resume-matching": 0,
+        "job-description": 1,
+        "resume-score": 2,
+        "smart-screening": 3,
+    }
+    service_index = service_index_map.get(service_name)
+    selected_service = service_data_list[service_index]
+    features = selected_service["features"]
+
     return render_template(
         "services.html",
         content_template=content_template,
         sidebar_links=sidebar_links,
-        features=features,
         services=service_data_list,
+        features=features,
+        service=selected_service,
         service_accordion=service_accordion,
     )
 

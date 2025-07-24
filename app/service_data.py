@@ -9,6 +9,15 @@ services = [
             "while increasing the chances of the right candidate being shortlisted. It helps "
             "both employers and job seekers make faster, smarter decisions."
         ),
+        "features": [
+            "Candidate Comparison",
+            "Relevance Scoring",
+            "Skill Mapping",
+            "Smart Filters",
+            "Ranking Algorithms",
+            "Instant Feedback",
+            "Time-saving Automation",
+        ],
     },
     {
         "title": "Job Description Analysis",
@@ -20,6 +29,15 @@ services = [
             "applications accordingly. For recruiters, it ensures consistent job post "
             "formatting and clarity."
         ),
+        "features": [
+            "Keyword Extraction",
+            "Skill Breakdown",
+            "Responsibility Highlights",
+            "Role Benchmarking",
+            "Text Clarity Checks",
+            "Optimized Structure",
+            "ATS Readability",
+        ],
     },
     {
         "title": "Resume Scorer",
@@ -30,6 +48,15 @@ services = [
             "formatting, and structure. Job seekers receive instant feedback with suggestions "
             "for improvement, helping them submit stronger applications that stand out."
         ),
+        "features": [
+            "Resume Rating",
+            "ATS Compatibility",
+            "Formatting Tips",
+            "Keyword Density",
+            "Instant Suggestions",
+            "Clarity & Brevity",
+            "Custom Metrics",
+        ],
     },
     {
         "title": "AI Screening",
@@ -40,5 +67,14 @@ services = [
             "criteria, ensuring no good applicant is overlooked. This drastically cuts down "
             "screening time and improves the accuracy and fairness of the hiring process."
         ),
+        "features": [
+            "Automated Ranking",
+            "Custom Filters",
+            "Bias Minimization",
+            "Bulk Review",
+            "Top Talent Detection",
+            "Time Efficiency",
+            "Fairness Assurance",
+        ],
     },
 ]
