@@ -25,23 +25,23 @@ def get_about_accordion():
 def get_contact_accordion():
     return [{
             "id": "One",
-            "title": "Customer Support Excellence",
-            "content": "We prioritize providing timely and helpful responses to every customer inquiry. Our support team ensures that all communication is clear, respectful, and productive.",
+            "title": "How does AI match resumes?",
+            "content": "Our AI analyzes the content of both the resume and the job description to identify key skills, experience, and qualifications. It then compares them to determine how well a candidate fits the role, generating a match score and highlighting relevant strengths.",
         },
         {
             "id": "Two",
-            "title": "Global Reach",
-            "content": "We serve clients worldwide and offer flexible support tailored to different time zones and business needs. Our contact channels are open 24/7 to support your inquiries.",
+            "title": "Is this tool for everyone?",
+            "content": "Yes. Recruiters save time by quickly identifying qualified candidates, while job seekers get insights on how well their resumes align with roles and receive suggestions for improvement.",
         },
         {
             "id": "Three",
-            "title": "Confidentiality Commitment",
-            "content": "All shared communication and data during contact are treated with the highest confidentiality. We strictly follow GDPR and industry best practices.",
+            "title": "How accurate is the analysis?",
+            "content": "Absolutely. Our AI is trained on industry-standard data and continuously improved through feedback and new data patterns to ensure it provides reliable and up-to-date recommendations.",
         },
         {
             "id": "Four",
-            "title": "Partnership Opportunities",
-            "content": "Looking to collaborate or integrate your service with ours? Reach out through the contact form and our business team will follow up shortly.",
+            "title": "Is it easy to use?",
+            "content": "Not at all. The system is built with simplicity in mind. Whether you’re a recruiter or job seeker, you can upload a resume or job description and get results in just a few clicks—no tech background needed.",
         },
     ]
 
