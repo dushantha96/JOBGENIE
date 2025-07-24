@@ -13,6 +13,7 @@ from skill_extractor import SKILL_KEYWORDS
 from flask import Flask, render_template, request
 from resume_utils import parse_resume, extract_text_from_pdf
 from matcher import match_resume_to_job
+from flask import send_from_directory
 import os
 
 app = Flask(__name__)
@@ -157,6 +158,15 @@ def index():
     return render_template("index.html", form=form, result=result, error=error)
 
 
+@app.route("/favicon.ico")
+def favicon():
+    return send_from_directory(
+        os.path.join(app.root_path, "static", "images"),
+        "favicon.ico",
+        mimetype="image/vnd.microsoft.icon",
+    )
+
+
 @app.context_processor
 def inject_contact_info():
     return dict(contact_info=contact_info)
@@ -197,7 +207,10 @@ def home():
         filename = uploaded_file.filename
 
         # 🚫 Reject non-PDF files by extension and MIME type
-        if not filename.lower().endswith(".pdf") or uploaded_file.content_type != "application/pdf":
+        if (
+            not filename.lower().endswith(".pdf")
+            or uploaded_file.content_type != "application/pdf"
+        ):
             error = "Only PDF files are allowed. Please upload a valid PDF."
             return render_template("home.html", form=form, result=None, error=error)
 
@@ -251,7 +264,6 @@ def home():
         }
 
     return render_template("home.html", form=form, result=result, error=error)
-
 
 
 @app.route("/services")

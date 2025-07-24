@@ -15,7 +15,7 @@ body {
 /* Common Styles End*/
 
 .navbar {
-    color: #000000;
+    color: #0f1702;
 }
 
 a.navbar-brand.logoTitle {
@@ -191,7 +191,7 @@ a.logoTitleFooter {
 }
 
 .taxonomyListItems a:hover {
-    color: #000000;
+    color: #0f1702;
 }
 
 .fourthtSecion {
@@ -235,7 +235,7 @@ footer {
 
 i.fa-brands {
     font-size: 1.5rem;
-    color: #000000;
+    color: #0f1702;
     text-decoration: none;
     white-space: nowrap;
     touch-action: manipulation;
@@ -267,7 +267,7 @@ i.fa-brands:hover {
 }
 
 .txt-black {
-    color: #000000;
+    color: #0f1702;
 }
 
 .footerEnd.pt-5.pb-5 {
@@ -346,7 +346,7 @@ p.fs-19375 {
 }
 
 .servicesList a:hover {
-    color: #000000;
+    color: #0f1702;
 }
 
 .services-page {
@@ -538,7 +538,7 @@ p.fs-19375 {
 
 .cnt-form-area .form-control {
     border: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #0f1702;
     border-radius: 0;
     padding-left: 0;
     padding-right: 0;
@@ -546,7 +546,7 @@ p.fs-19375 {
 }
 
 .cnt-form-area .form-control:focus {
-    border-bottom-color: #000;
+    border-bottom-color: #0f1702;
     box-shadow: none;
 }
 
