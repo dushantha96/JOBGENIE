@@ -1,6 +1,5 @@
 def get_about_accordion():
-    return [
-        {
+    return [{
             "id": "One",
             "title": "Data-Driven Innovation",
             "content": "Our AI-Powered Resume Matching system intelligently compares resumes with job descriptions to identify the best candidate matches. By analyzing skills, experience, and relevance, it significantly reduces manual effort for recruiters while increasing the chances of the right candidate being shortlisted. It helps both employers and job seekers make faster, smarter decisions.",
@@ -24,8 +23,7 @@ def get_about_accordion():
 
 
 def get_contact_accordion():
-    return [
-        {
+    return [{
             "id": "One",
             "title": "Customer Support Excellence",
             "content": "We prioritize providing timely and helpful responses to every customer inquiry. Our support team ensures that all communication is clear, respectful, and productive.",
@@ -49,25 +47,25 @@ def get_contact_accordion():
 
 
 def get_service_accordion():
-    return [
-        {
+    return [{
             "id": "One",
-            "title": "Customer Support Excellence",
-            "content": "We prioritize providing timely and helpful responses to every customer inquiry. Our support team ensures that all communication is clear, respectful, and productive.",
+            "title": "Real-Time Feedback",
+            "content": "Job seekers receive instant feedback on their resume quality and relevance. Suggestions are provided to improve formatting, highlight missing skills, and optimize keyword usage to increase their chances of selection.",
         },
         {
             "id": "Two",
-            "title": "Global Reach",
-            "content": "We serve clients worldwide and offer flexible support tailored to different time zones and business needs. Our contact channels are open 24/7 to support your inquiries.",
+            "title": "Smart Resume Matching",
+            "content": "Our system uses advanced AI to evaluate how well a resume aligns with a job description. It scans for relevant keywords, skills, and experience to provide precise match scores that help both recruiters and applicants make informed decisions.",
         },
         {
             "id": "Three",
-            "title": "Confidentiality Commitment",
-            "content": "All shared communication and data during contact are treated with the highest confidentiality. We strictly follow GDPR and industry best practices.",
+            "title": "AI Screening for Recruiters",
+            "content": "The platform automates the initial screening process, helping recruiters quickly filter through large volumes of resumes. Top candidates are prioritized based on customizable matching criteria, saving hours of manual effort.",
         },
         {
             "id": "Four",
-            "title": "Partnership Opportunities",
-            "content": "Looking to collaborate or integrate your service with ours? Reach out through the contact form and our business team will follow up shortly.",
+            "title": "Data-Driven Hiring Insights",
+            "content": "Employers get access to actionable insights, including candidate fit scores, missing qualifications, and hiring trends. These analytics support smarter hiring strategies and promote fairness and transparency in selection.",
         },
+
     ]

@@ -4,6 +4,10 @@
 
 {% block content %}
 <style>
+    body {
+        overflow-x: hidden;
+    }
+
     .servicesList a.active {
         color: #0f1702 !important;
         font-weight: bold;
@@ -64,7 +68,6 @@
         </div>
         {% endif %}
     </div>
-
     {% if not content_template %}
     <div class="pt-5">
         <div class="container">
@@ -85,7 +88,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Main Content Section -->
                 <div class="col-9 services-page" id="servicesContent">
                     {% for service in services %}
@@ -113,7 +115,6 @@
                                     {% endfor %}
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     {% endfor %}
@@ -121,8 +122,8 @@
             </div>
         </div>
     </div>
-
-    <div class="bg-services-page-accordion pt-5 pb-5" style="width: 100vw; margin-left: calc(-50vw + 50%);">
+    <div class="bg-services-page-accordion pt-5 pb-5 overflow-hidden"
+        style="width: 100vw; position: relative; left: 50%; right: 50%; margin-left: -50vw; margin-right: -50vw;">
         <div class="container">
             <div class="row">
                 <div class="col-6">
@@ -130,14 +131,11 @@
                         <p class="fs-17 fw-medium">How Our Platform Works</p>
                     </div>
                     <div class="pt-5">
-                        <p class="bigHeading fw-semibold pb-4">Our passion lies in building intelligent solutions that
-                            simplify
-                            hiring and elevate career growth</p>
-                        <p class="fs-10625 fw-medium">Our team takes immense pride not only in the intelligence and
-                            innovation
-                            behind our AI solutions, but also in our quick response times, transparent communication,
-                            and
-                            commitment to delivering real value to both job seekers and employers.</p>
+                        <p class="bigHeading fw-semibold pb-4">We simplify hiring through AI-powered insights and
+                            intelligent automation</p>
+                        <p class="fs-10625 fw-medium">Our AI-powered system streamlines hiring by matching resumes with
+                            job descriptions accurately and efficiently. It helps recruiters discover top talent faster
+                            while guiding candidates to tailor their applications for better opportunities.</p>
                     </div>
                 </div>
                 <div class="col-6">
@@ -167,7 +165,6 @@
         </div>
     </div>
     <!-- End Accordion Section -->
-
     {% else %}
     <div class="row">
         <div class="col-12 services-page">
@@ -176,7 +173,6 @@
     </div>
     {% endif %}
 </div>
-
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         const sections = document.querySelectorAll(".service-section");
@@ -186,7 +182,6 @@
 
         function onScroll() {
             const scrollY = window.scrollY || document.documentElement.scrollTop;
-
             // Highlight active link
             sections.forEach((section, index) => {
                 const offsetTop = section.offsetTop - 120;
@@ -195,7 +190,6 @@
                     navLinks[index].classList.add("active");
                 }
             });
-
             // Sticky logic
             const lastSectionBottom = lastSection.offsetTop + lastSection.offsetHeight;
             const viewportBottom = scrollY + window.innerHeight;
@@ -206,7 +200,6 @@
                 sidebar.classList.remove("sticky-fixed");
             }
         }
-
         document.addEventListener("scroll", onScroll);
         window.addEventListener("resize", onScroll);
         onScroll();

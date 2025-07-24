@@ -68,7 +68,6 @@
             <div class="col-6">
                 <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
                     {{ form.hidden_tag() }}
-
                     <div class="mb-3">
                         {{ form.resume_file.label(class="form-label") }}
                         {{ form.resume_file(class="form-control") }}
@@ -76,7 +75,6 @@
                         <div class="text-danger small">{{ error }}</div>
                         {% endfor %}
                     </div>
-
                     <div class="mb-3">
                         {{ form.job.label(class="form-label") }}
                         {{ form.job(class="form-control", rows="6") }}
@@ -87,9 +85,7 @@
                     <button type="submit" class="btn rounded-pill px-4 fw-semibold hover-slide float-end w-100">
                         {{ form.submit.label.text }}
                     </button>
-
                 </form>
-
                 <div class="p-4">
                     <div class="mx-auto text-start">
                         <p class="mb-0 fs-10625 fw-medium"><strong>Step 01 :</strong> Upload your resume in PDF format
@@ -113,7 +109,6 @@
                     </div>
                 </div>
                 {% endif %}
-
                 {% if result %}
                 <div class="card p-4 shadow-sm">
                     <h5 class="text-green"><b>Match Score: {{ result.score }}%</b></h5>

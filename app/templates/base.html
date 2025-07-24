@@ -7,17 +7,13 @@
     <title>{% block title %}Resume Matcher{% endblock %}</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-
     <!-- Custom styles -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-
     <!-- Poppins font -->
     <link rel="stylesheet" href="{{ url_for('static', filename='font/poppins/stylesheet.css') }}">
-
     <!-- Font Awesome CDN (v6) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     {% block head_extra %}{% endblock %}
 </head>
 
@@ -25,18 +21,13 @@
     <div class="bg-cover">
         <div class="overlay"></div>
     </div>
-
     {% include 'components/navbar.html' %}
-
     <main>
         {% block content %}{% endblock %}
     </main>
-
     {% include 'components/footer.html' %}
-
     <!-- Bootstrap JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     {% block scripts %}{% endblock %}
 </body>
 
