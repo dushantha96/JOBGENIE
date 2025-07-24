@@ -4,9 +4,9 @@ contact_info = {
     "phone": "01522 528 246",
     "email": "hello@jobgenie.co.uk",
     "social_links": {
-        "instagram": "https://instagram.com/yourprofile",
-        "facebook": "https://facebook.com/yourprofile",
-        "linkedin": "https://linkedin.com/in/yourprofile",
-        "twitter": "https://twitter.com/yourprofile",
+        "instagram": "https://instagram.com",
+        "facebook": "https://facebook.com",
+        "linkedin": "https://linkedin.com/",
+        "twitter": "https://x.com/",
     },
 }
