@@ -42,31 +42,31 @@
             <div class="col-3">
                 <div class="c-footer__contact-item">
                     <h5 class="c-footer__contact-location fs-11 txt-black mb-0">Call JobGenie</h5>
-                    <a href="tel:01522 528 246" class="fs-15 txt-black fw-bold footerHover text-decoration-none">01522
-                        528 246</a>
+                    <a href="tel:{{ contact_info.phone }}"
+                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">
+                        {{ contact_info.phone }}
+                    </a>
                 </div>
             </div>
             <div class="col-3">
                 <div class="c-footer__contact-item">
                     <h5 class="c-footer__contact-location fs-11 txt-black mb-0">Email Us</h5>
-                    <a href="mailto:hello@rootstudio.co.uk"
-                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">hello@jobgenie.co.uk</a>
+                    <a href="mailto:{{ contact_info.email }}"
+                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">
+                        {{ contact_info.email }}
+                    </a>
                 </div>
             </div>
+
             <div class="col-3">
                 <nav class="footerSocial">
-                    <a href="#" class="fs-2">
-                        <i class="fa-brands fa-instagram"></i>
+                    {% for platform, url in contact_info.social_links.items() %}
+                    <a href="{{ url }}" class="fs-2" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-{{ platform }}"></i>
                     </a>
-                    <a href="#" class="fs-2">
-                        <i class="fa-brands fa-facebook"></i>
-                    </a>
-                    <a href="#" class="fs-2">
-                        <i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="fs-2">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
+                    {% endfor %}
                 </nav>
+
             </div>
         </div>
     </div>

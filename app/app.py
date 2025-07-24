@@ -1,10 +1,14 @@
+from contact_info import contact_info
+
+# avoid name collision
+from service_data import services as service_data_list
 from accordion import (
     get_about_accordion,
     get_contact_accordion,
-    get_service_accordion,  # ✅ already imported
+    get_service_accordion,
 )
 from flask import render_template, redirect, flash, url_for, abort
-from forms import ContactForm, ResumeMatchForm  # ✅ add ResumeMatchForm
+from forms import ContactForm, ResumeMatchForm
 from skill_extractor import SKILL_KEYWORDS
 from flask import Flask, render_template, request
 from resume_utils import parse_resume, extract_text_from_pdf
@@ -12,7 +16,7 @@ from matcher import match_resume_to_job
 import os
 
 app = Flask(__name__)
-app.secret_key = "your-very-secret-key"  # Replace this with a strong, random key
+app.secret_key = "your-very-secret-key"
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
@@ -92,7 +96,7 @@ STOPWORDS = {
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    # ... your existing index logic unchanged ...
+
     result = None
     error = None
     form = ResumeMatchForm()
@@ -151,6 +155,11 @@ def index():
         }
 
     return render_template("index.html", form=form, result=result, error=error)
+
+
+@app.context_processor
+def inject_contact_info():
+    return dict(contact_info=contact_info)
 
 
 @app.route("/about")
@@ -227,53 +236,7 @@ def services(service_name=None):
         "Logo Design",
     ]
 
-    # Service details data
-    services = [
-        {
-            "title": "Smart Matchmaking",
-            "image": "serviceBanner1.png",
-            "description": (
-                "Our AI-Powered Resume Matching system intelligently compares resumes with job "
-                "descriptions to identify the best candidate matches. By analyzing skills, "
-                "experience, and relevance, it significantly reduces manual effort for recruiters "
-                "while increasing the chances of the right candidate being shortlisted. It helps "
-                "both employers and job seekers make faster, smarter decisions."
-            ),
-        },
-        {
-            "title": "Job Description Analysis",
-            "image": "serviceBanner2.png",
-            "description": (
-                "This tool breaks down job descriptions into their core components—key skills, "
-                "qualifications, responsibilities, and experience requirements. It enables job "
-                "seekers to understand exactly what employers are looking for and tailor their "
-                "applications accordingly. For recruiters, it ensures consistent job post "
-                "formatting and clarity."
-            ),
-        },
-        {
-            "title": "Resume Scorer",
-            "image": "serviceBanner3.png",
-            "description": (
-                "Our Resume Score Calculator evaluates how well a resume aligns with a given job "
-                "description, assigning it a performance score based on relevance, keyword usage, "
-                "formatting, and structure. Job seekers receive instant feedback with suggestions "
-                "for improvement, helping them submit stronger applications that stand out."
-            ),
-        },
-        {
-            "title": "AI Screening",
-            "image": "serviceBanner4.png",
-            "description": (
-                "Smart Resume Screening uses AI to automatically review and rank large volumes of "
-                "resumes. It highlights the most qualified candidates based on customizable "
-                "criteria, ensuring no good applicant is overlooked. This drastically cuts down "
-                "screening time and improves the accuracy and fairness of the hiring process."
-            ),
-        },
-    ]
-
-    # ✅ Add accordion for services
+    # Add accordion for services
     service_accordion = get_service_accordion()
 
     if service_name is None:
@@ -282,7 +245,7 @@ def services(service_name=None):
             content_template=None,
             sidebar_links=sidebar_links,
             features=features,
-            services=services,
+            services=service_data_list,
             service_accordion=service_accordion,
         )
 
@@ -295,7 +258,7 @@ def services(service_name=None):
         content_template=content_template,
         sidebar_links=sidebar_links,
         features=features,
-        services=services,
+        services=service_data_list,
         service_accordion=service_accordion,
     )
 

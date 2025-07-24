@@ -27,16 +27,26 @@
             </div>
             <div class="row">
                 <div class="col-6">
-                    <h5 class="fs-08125 txt-black pb-2">© Job Genie LTD</h5>
-                    <p class="fs-09375 fw-bold">Riverside House,<br>Maple Avenue,<br>LE3 5QT</p>
-                    <a href="tel:01522 528 246" class="fs-15 txt-black fw-bold footerHover text-decoration-none">01522
-                        528 246</a>
+                    <h5 class="fs-08125 txt-black pb-2">© {{ contact_info.company_name }}</h5>
+                    <p class="fs-09375 fw-bold">
+                        {{ contact_info.address_lines[0] }}<br>
+                        {{ contact_info.address_lines[1] }}<br>
+                        {{ contact_info.address_lines[2] }}
+                    </p>
+                    <a href="tel:{{ contact_info.phone }}"
+                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">
+                        {{ contact_info.phone }}
+                    </a>
                 </div>
+
                 <div class="col-6">
                     <h5 class="fs-08125 txt-black pb-2">Email Us</h5>
-                    <a href="mailto:hello@rootstudio.co.uk"
-                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">hello@jobgenie.co.uk</a>
+                    <a href="mailto:{{ contact_info.email }}"
+                        class="fs-15 txt-black fw-bold footerHover text-decoration-none">
+                        {{ contact_info.email }}
+                    </a>
                 </div>
+
             </div>
         </div>
     </div>

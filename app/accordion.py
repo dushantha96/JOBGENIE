@@ -1,4 +1,3 @@
-# accordion.py
 def get_about_accordion():
     return [
         {
@@ -23,6 +22,7 @@ def get_about_accordion():
         },
     ]
 
+
 def get_contact_accordion():
     return [
         {
@@ -46,6 +46,7 @@ def get_contact_accordion():
             "content": "Looking to collaborate or integrate your service with ours? Reach out through the contact form and our business team will follow up shortly.",
         },
     ]
+
 
 def get_service_accordion():
     return [
