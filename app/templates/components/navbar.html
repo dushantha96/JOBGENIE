@@ -1,5 +1,24 @@
-<div class="container">
-    <nav class="navbar navbar-dark bg-white">
+<style>
+    .sticky-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 9999;
+        transition: box-shadow 0.3s ease;
+    }
+
+    .sticky-navbar.scrolled {
+        box-shadow: 0 2px 5px rgba(15, 23, 2, 0.1);
+    }
+
+    .navbar-space {
+        height: 70px;
+    }
+</style>
+
+<nav class="navbar navbar-dark bg-white sticky-navbar">
+    <div class="container">
         <a class="navbar-brand logoTitle" href="{{ url_for('index') }}"><b>Job</b><span
                 class="genieTxt">Genie</span></a>
         <div class="d-flex ms-auto navLink">
@@ -12,5 +31,16 @@
             <a class="nav-link fw-semibold {% if request.path == url_for('contact') %}fw-bold text-decoration-underline color-primary{% endif %}"
                 href="{{ url_for('contact') }}">Contact</a>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
+<div class="navbar-space"></div>
+<script>
+    window.addEventListener('scroll', function () {
+        const navbar = document.querySelector('.sticky-navbar');
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+    });
+</script>
