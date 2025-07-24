@@ -96,7 +96,6 @@ STOPWORDS = {
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-
     result = None
     error = None
     form = ResumeMatchForm()
@@ -151,6 +150,7 @@ def index():
             "parsed": parsed,
             "score": score,
             "verdict": verdict,
+            "matched_skills": matched_skills,
             "feedback": feedback,
         }
 
@@ -185,15 +185,78 @@ def contact():
     )
 
 
-@app.route("/home")
+@app.route("/home", methods=["GET", "POST"])
 def home():
-    return render_template("home.html")
+    result = None
+    error = None
+    form = ResumeMatchForm()
+
+    if form.validate_on_submit():
+        uploaded_file = form.resume_file.data
+        job_text = form.job.data
+        filename = uploaded_file.filename
+
+        # 🚫 Reject non-PDF files by extension and MIME type
+        if not filename.lower().endswith(".pdf") or uploaded_file.content_type != "application/pdf":
+            error = "Only PDF files are allowed. Please upload a valid PDF."
+            return render_template("home.html", form=form, result=None, error=error)
+
+        file_path = os.path.join(UPLOAD_FOLDER, filename)
+        uploaded_file.save(file_path)
+
+        resume_text = extract_text_from_pdf(file_path)
+        parsed = parse_resume(resume_text)
+        score, matched_skills = match_resume_to_job(resume_text, job_text)
+
+        if score >= 85:
+            verdict = "Excellent Fit – Highly recommended"
+        elif score >= 70:
+            verdict = "Good Fit – Likely suitable"
+        elif score >= 50:
+            verdict = "Moderate Fit – Review recommended"
+        elif score >= 30:
+            verdict = "Low Fit – Probably not suitable"
+        else:
+            verdict = "Poor Fit – Not recommended"
+
+        resume_set = set(skill.lower() for skill in matched_skills)
+        jd_words = set(word.lower().strip(".,") for word in job_text.split())
+        jd_skills = set(word for word in jd_words if word in SKILL_KEYWORDS)
+
+        missing_skills = jd_skills - resume_set
+
+        filtered_missing_skills = [
+            skill
+            for skill in missing_skills
+            if skill not in STOPWORDS and len(skill) > 1 and skill.isalpha()
+        ]
+
+        limited_missing_skills = sorted(filtered_missing_skills)[:10]
+
+        if score < 50 and limited_missing_skills:
+            feedback = (
+                "Your skills do not match the job description well. "
+                "Consider acquiring or emphasizing: "
+                + ", ".join(limited_missing_skills)
+            )
+        else:
+            feedback = "Your skills match the job description well."
+
+        result = {
+            "parsed": parsed,
+            "score": score,
+            "verdict": verdict,
+            "matched_skills": matched_skills,
+            "feedback": feedback,
+        }
+
+    return render_template("home.html", form=form, result=result, error=error)
+
 
 
 @app.route("/services")
 @app.route("/services/<service_name>")
 def services(service_name=None):
-    # existing service templates mapping
     service_templates = {
         "resume-matching": "service_partials/resume_matching.html",
         "job-description": "service_partials/job_description.html",
@@ -201,7 +264,6 @@ def services(service_name=None):
         "smart-screening": "service_partials/smart_screening.html",
     }
 
-    # links data
     sidebar_links = [
         {
             "name": "Resume Matching",
@@ -240,7 +302,6 @@ def services(service_name=None):
     if not content_template:
         abort(404)
 
-    # Match service by route key
     service_index_map = {
         "resume-matching": 0,
         "job-description": 1,

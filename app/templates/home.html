@@ -1,3 +1,24 @@
+<style>
+    #loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.4);
+        display: none;
+        z-index: 9999;
+    }
+
+    .loader-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<!-- HERO -->
 <div class="firstSection pt-5 pb-5">
     <div class="container">
         <div class="row">
@@ -17,17 +38,16 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
+<!-- INTRO -->
 <div class="secondSection pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-4">
                 <div class="taxonomyListTitle">
-                    <h3 class="fw-bold">
-                        Services included
-                    </h3>
+                    <h3 class="fw-bold">Services included</h3>
                 </div>
                 <div class="taxonomyListItems d-flex flex-column">
                     <a href="/services/resume-matching" class="fs-15 fw-bold">AI-Powered Resume Matching</a>
@@ -38,19 +58,17 @@
             </div>
             <div class="col-2"></div>
             <div class="col-6">
-                <div>
-                    <p class="fs-17 fw-medium">We’ve designed a smart, intuitive platform that helps job seekers align
-                        their
-                        resumes with career opportunities. Using AI-driven insights, users receive instant match scores
-                        and tailored feedback.</p>
-                    <p class="fs-17 mb-0 fw-medium">With clean design, bold visuals, and simple tools, our goal is to
-                        make career
-                        growth clearer, faster, and more effective for everyone.</p>
-                </div>
+                <p class="fs-17 fw-medium">We’ve designed a smart, intuitive platform that helps job seekers align their
+                    resumes with career opportunities. Using AI-driven insights, users receive instant match scores and
+                    tailored feedback.</p>
+                <p class="fs-17 mb-0 fw-medium">With clean design, bold visuals, and simple tools, our goal is to make
+                    career growth clearer, faster, and more effective for everyone.</p>
             </div>
         </div>
     </div>
 </div>
+
+<!-- BANNER -->
 <div class="pb-5">
     <div class="container">
         <div class="row">
@@ -62,15 +80,25 @@
         </div>
     </div>
 </div>
+
+<div class="container">
+    <div id="error-container">
+        {% if error %}
+        <div class="alert alert-danger mb-3">{{ error }}</div>
+        {% endif %}
+    </div>
+</div>
+
 <div class="thirdtSetcion pt-5 pb-5">
     <div class="container">
         <div class="row">
+            <!-- FORM -->
             <div class="col-6">
-                <form method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
+                <form id="analyze-form" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm">
                     {{ form.hidden_tag() }}
                     <div class="mb-3">
                         {{ form.resume_file.label(class="form-label") }}
-                        {{ form.resume_file(class="form-control") }}
+                        {{ form.resume_file(class="form-control", accept="application/pdf") }}
                         {% for error in form.resume_file.errors %}
                         <div class="text-danger small">{{ error }}</div>
                         {% endfor %}
@@ -86,83 +114,87 @@
                         {{ form.submit.label.text }}
                     </button>
                 </form>
+
                 <div class="p-4">
-                    <div class="mx-auto text-start">
-                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 01 :</strong> Upload your resume in PDF format
-                            only.</p>
-                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 02 :</strong> Paste the related job description
-                            into the
-                            textbox.
-                        </p>
-                        <p class="mb-0 fs-10625 fw-medium"><strong>Step 03 :</strong> Click the "Match" button to
-                            analyze AI score.
-                        </p>
-                    </div>
+                    <p class="mb-0 fs-10625 fw-medium"><strong>Step 01:</strong> Upload your resume in PDF format only.
+                    </p>
+                    <p class="mb-0 fs-10625 fw-medium"><strong>Step 02:</strong> Paste the related job description into
+                        the textbox.</p>
+                    <p class="mb-0 fs-10625 fw-medium"><strong>Step 03:</strong> Click the "Match" button to analyze AI
+                        score.</p>
                 </div>
             </div>
+
+            <!-- RESULTS -->
             <div class="col-6">
-                {% if not result %}
-                <div class="p-4">
-                    <h5 class="fw-semibold text-center fs-19375 mb-0">Ready to Know the AI Score!</h5>
-                    <div class="text-center">
+                <div id="placeholder-section" {% if result or error %}style="display: none;" {% endif %}>
+                    <div class="p-4 text-center">
+                        <h5 class="fw-semibold fs-19375 mb-0">Ready to Know the AI Score!</h5>
                         <img class="w-100" src="{{ url_for('static', filename='images/analyze-img.png') }}" alt="">
                     </div>
                 </div>
-                {% endif %}
-                {% if result %}
-                <div class="card p-4 shadow-sm">
-                    <h5 class="text-green"><b>Match Score: {{ result.score }}%</b></h5>
-                    <p class="text-primary mt-2"><strong>Suitability:</strong> {{ result.verdict }}</p>
-                    <span class="mt-3 fs-14"><b>Parsed Resume Info:</b></span>
-                    <ul class="list-group list-group-flush pt-3 border-0">
-                        {% for key, value in result.parsed.items() %}
-                        <li class="list-group-item fs-14 ps-0 border-0 pb-0">
-                            <strong>{{ key }}:</strong> {{ value }}
-                        </li>
-                        {% endfor %}
-                        <li class="list-group-item fs-14 ps-0 border-0 pb-0"><strong>Matched Skills:</strong>
-                            {% if result.matched_skills %}
-                            {{ result.matched_skills | join(', ') }}
-                            {% else %}
-                            None
-                            {% endif %}
-                        </li>
-                    </ul>
-                    {% if result and result.feedback %}
-                    <div class="alert alert-info mt-3">
-                        <strong>Feedback:</strong> {{ result.feedback }}
+
+                <div id="result-area">
+                    {% if result %}
+                    <div class="card p-4 shadow-sm">
+                        <h5 class="text-green"><b>Match Score: {{ result.score }}%</b></h5>
+                        <p class="text-primary mt-2"><strong>Suitability:</strong> {{ result.verdict }}</p>
+                        <span class="mt-3 fs-14"><b>Parsed Resume Info:</b></span>
+                        <ul class="list-group list-group-flush pt-3 border-0">
+                            {% for key, value in result.parsed.items() %}
+                            <li class="list-group-item fs-14 ps-0 border-0 pb-0">
+                                <strong>{{ key }}:</strong> {{ value }}
+                            </li>
+                            {% endfor %}
+                            <li class="list-group-item fs-14 ps-0 border-0 pb-0">
+                                <strong>Matched Skills:</strong>
+                                {% if result.matched_skills %}
+                                {{ result.matched_skills | join(', ') }}
+                                {% else %}None{% endif %}
+                            </li>
+                        </ul>
+                        {% if result.feedback %}
+                        <div class="alert alert-info mt-3">
+                            <strong>Feedback:</strong> {{ result.feedback }}
+                        </div>
+                        {% endif %}
                     </div>
                     {% endif %}
                 </div>
-                {% endif %}
             </div>
         </div>
     </div>
 </div>
+
+<!-- SPINNER FULL OVERLAY -->
+<div id="loading-overlay">
+    <div class="loader-icon">
+        <div class="spinner-border text-dark" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+</div>
+
 <div class="fifthtSection pt-5 pb-5">
     <div class="container">
         <div class="row">
             <div class="col-2"></div>
             <div class="col-8 text-center">
-                <div class="bigHeading">
-                    <p class="fs-19375 text-center mb-0 fw-semibold">We’ve had great feedback from job seekers and
-                        recruiters. Our
-                        AI
-                        platform
-                        simplifies
-                        hiring by delivering clear match scores between resumes and job descriptions. With smart design
-                        and
-                        deep insights, it helps users refine their CVs and make confident career moves.</p>
-                </div>
+                <p class="fs-19375 fw-semibold">
+                    We’ve had great feedback from job seekers and recruiters. Our AI platform simplifies hiring by
+                    delivering clear match scores between resumes and job descriptions. With smart design and deep
+                    insights, it helps users refine their CVs and make confident career moves.
+                </p>
             </div>
             <div class="col-2"></div>
         </div>
     </div>
 </div>
+
 <div class="fourthtSecion pt-5 pb-5">
     <div class="container">
         <div class="row">
-            <div class="col-12 guideChecker align-items-center text-center">
+            <div class="col-12 guideChecker text-center">
                 <a class="txt-white fw-semibold" href="{{ url_for('contact') }}">
                     Match CV &nbsp;<i class="fa-solid fa-arrow-right"></i>
                 </a>
@@ -170,3 +202,65 @@
         </div>
     </div>
 </div>
+
+<script>
+    const form = document.getElementById('analyze-form');
+    const overlay = document.getElementById('loading-overlay');
+    const placeholder = document.getElementById('placeholder-section');
+    const resultArea = document.getElementById('result-area');
+    const errorContainer = document.getElementById('error-container');
+
+    form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+
+        errorContainer.innerHTML = '';
+        resultArea.innerHTML = '';
+        overlay.style.display = 'block';
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch('{{ url_for("home") }}', {
+                method: 'POST',
+                body: formData
+            });
+
+            // Wait artificially so spinner is visible long enough
+            const html = await response.text();
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            const newResult = doc.getElementById('result-area');
+            const newError = doc.getElementById('error-container');
+
+            if (newError) {
+                errorContainer.innerHTML = newError.innerHTML;
+            }
+
+            if (newResult) {
+                resultArea.innerHTML = newResult.innerHTML;
+            }
+
+            placeholder.style.display = (newResult && newResult.innerHTML.trim() !== '') ||
+                (newError && newError.innerHTML.trim() !== '') ? 'none' : 'block';
+
+        } catch (err) {
+            alert("Something went wrong. Please try again.");
+            console.error(err);
+        } finally {
+            overlay.style.display = 'none';
+        }
+    });
+
+    // PDF validation
+    form.addEventListener("change", function () {
+        const fileInput = form.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+        if (file && file.type !== "application/pdf") {
+            alert("Only PDF files are allowed.");
+            fileInput.value = "";
+        }
+    });
+</script>
